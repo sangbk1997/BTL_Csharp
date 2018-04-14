@@ -1,0 +1,94 @@
+﻿@model BTLCsharp.Models.SignUpModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SignUp</title>
+    @Styles.Render("~/Content/Site.css")
+    @Scripts.Render("~/Content/myFunction.js")
+    @Scripts.Render("~/Content/Function.js")
+
+
+</head>
+<body>
+    <div class="modal" id="idSignUp">
+        @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="containerSignUp">
+            <span class="close" onclick="return hello();">&times;</span>
+            <h1>Sign Up</h1>
+            <p style="font-size: 20px; color:#808080;">Please fill in this form to create an account</p>
+            <hr />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "inputData", @placeholder = "Enter Your Email" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "inputData", @placeholder = "Enter Username" } })
+                    @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "inputData", @placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.repeatPsw, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.repeatPsw, new { htmlAttributes = new { @class = "inputData", @placeholder = "Retype password" } })
+                    @Html.ValidationMessageFor(model => model.repeatPsw, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.age, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.age, new { htmlAttributes = new { @class = "inputData" } })
+                    @Html.ValidationMessageFor(model => model.age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "inputData" } })
+                    @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div>
+                <div style="text-align:center;">
+                    <input type="button" value="Cancel" class="btnCancel" />
+                    <input type="submit" value="Create" class="btnSignUp" />
+                </div>
+            </div>
+        </div>
+}
+
+        <div>
+            @Html.ActionLink("Go HomePage", "Index", "Home")
+        </div>
+    </div>
+</body>
+</html>

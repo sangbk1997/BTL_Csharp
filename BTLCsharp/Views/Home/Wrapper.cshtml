@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Wrapper</title>
+    @Styles.Render("~/Content/Site.css")
+</head>
+<body>
+    <div class="containerPage">
+
+        <div class="wrapperPage">
+            <div class="curtain">
+
+            </div>
+            <div class="tab-link">
+                @Html.ActionLink("Home", "Index", "Home")
+                @Html.ActionLink("Contact", "Contact", "Home")
+                @Html.ActionLink("About", "About", "Home")
+                @Html.ActionLink("SignUp", "SignUp", "User")
+                @Html.ActionLink("Login", "Login", "User")
+            </div>
+            <div class="aboutWebsite">
+                <div class="title" style="font-size: 40px;">Welcom ListenAndWrtie.com</div>
+                <br>
+                <div>
+                    <div style="font-size:20px;">
+                        Listening is the natural way to learn a language. We offer a very easy way to learn English: Just listen and enjoy!
+
+                    </div>
+                    @* English Listening provides authentic listening passages that are interesting, fun and educational for ESL teachers and English language learners. We provide over 500 passages at all different levels. Each passage includes a summary, a transcript, a test, and a context photo of the speaker. All passages can be simultaneously filtered by: accent, CEFR levels, topics and purpose. Groups of passages can also be sorted by speed and length.*@
+                </div>
+                <br><br /><br />
+                <div>
+                    <span class="btnLearn">@Html.ActionLink("Learn Now", "Index", "Home")</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

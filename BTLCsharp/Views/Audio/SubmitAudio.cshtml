@@ -1,0 +1,98 @@
+﻿@model BTLCsharp.Models.FormInputAudio
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SubmitAudio</title>
+    @Styles.Render("~/Content/Site.css")
+</head>
+<body>
+    <div class="modal">
+        <div class="formSubmitAudio">
+            <div class="containerForm">
+                 <span class="close" onclick="return hello();">&times;</span>
+                <h2>Submit Audio</h2>
+
+                @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div>
+                    <h4>FormInputAudio</h4>
+                    <hr />
+                    <br />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.audioName, htmlAttributes: new { @class = "label" })
+                        <div>
+                            @Html.EditorFor(model => model.audioName, new { htmlAttributes = new { @class = "inputData" } })
+                            @Html.ValidationMessageFor(model => model.audioName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.level, htmlAttributes: new { @class = "label" })
+                        <div>
+                            @Html.EditorFor(model => model.level, new { htmlAttributes = new { @class = "inputData" } })
+                            @Html.ValidationMessageFor(model => model.level, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.categoryAudio, htmlAttributes: new { @class = "label" })
+                        <div>
+                            @{
+                                var listCategories = new List<SelectListItem>();
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
+                            
+                            }
+                            @Html.DropDownListFor(model => model.categoryAudio,listCategories, htmlAttributes:new {@class="dropList", @style="color: green; padding: 5px; width: 50%; margin: 10px auto; font-size: 18px; text-align: center;"})
+                            @Html.ValidationMessageFor(model => model.categoryAudio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.transcriptAudio, htmlAttributes: new { @class = "label" })
+                        <div>
+                            @Html.TextAreaFor(model => model.transcriptAudio, htmlAttributes: new { @class = "inputTextArea", @cols = 100, @rows = "10" })
+                            @Html.ValidationMessageFor(model => model.transcriptAudio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <div>
+                        @Html.LabelFor(model => model.urlAudio, htmlAttributes: new { @class = "label" })
+                        <div>
+                            @Html.EditorFor(model => model.urlAudio, new { htmlAttributes = new { @class = "inputData" } })
+                            @Html.ValidationMessageFor(model => model.urlAudio, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div>
+                        <div style="text-align:center;">
+                            <input type="submit" value="Submit" class="btnSubmit" />
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+        }
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

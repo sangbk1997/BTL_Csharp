@@ -1,0 +1,7 @@
+F:\DotNet\BTL\BTLCsharp\TempClass\bin\Debug\TempClass.exe.config
+F:\DotNet\BTL\BTLCsharp\TempClass\bin\Debug\TempClass.exe
+F:\DotNet\BTL\BTLCsharp\TempClass\bin\Debug\TempClass.pdb
+F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.csprojResolveAssemblyReference.cache
+F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.csproj.CoreCompileInputs.cache
+F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.exe
+F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.pdb

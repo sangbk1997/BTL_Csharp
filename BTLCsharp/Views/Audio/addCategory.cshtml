@@ -1,0 +1,60 @@
+﻿@model BTLCsharp.Models.CategoryModal
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addCategory</title>
+    @Styles.Render("~/Content/Site.css")
+</head>
+<body>
+    <div class="modal" id="idCategory">
+        @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="containerCategory" style="width: 50%; margin: 100px auto; background-color: white; position: relative; padding: 30px; border-radius: 20px;">
+            <span class="close" onclick="return hello();">&times;</span>
+            <h1>Add Category</h1>
+            <hr />
+            <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div>
+                @Html.LabelFor(model => model.category, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.category, new { htmlAttributes = new { @class = "inputData" } })
+                    @Html.ValidationMessageFor(model => model.category, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.TextAreaFor(model => model.description, htmlAttributes: new { @class= "inputTextArea", @rows="10", @cols="80"})
+                    @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div>
+                @Html.LabelFor(model => model.urlImg, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.EditorFor(model => model.urlImg, new { htmlAttributes = new { @class = "inputData" } })
+                    @Html.ValidationMessageFor(model => model.urlImg, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div>
+                <div style="text-align: center;">
+                    <input type="submit" value="Submit Category" class="btnSubmit" />
+                </div>
+            </div>
+        </div>
+}
+    </div>
+</body>
+</html>
