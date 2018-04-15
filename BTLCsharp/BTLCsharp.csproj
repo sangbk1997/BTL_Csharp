@@ -194,12 +194,6 @@
     <Content Include="Content\image\linkdin1.png" />
     <Content Include="Content\image\linkdin2.jpg" />
     <Content Include="Content\image\logo.png" />
-    <Content Include="Content\image\logo1\1_Primary_logo_on_transparent_394x63.png" />
-    <Content Include="Content\image\logo1\2_Flat_logo_on_transparent_394x63.png" />
-    <Content Include="Content\image\logo1\3_White_logo_on_color1_394x63.png" />
-    <Content Include="Content\image\logo1\4_Grayscale_logo_on_transparent_394x63.png" />
-    <Content Include="Content\image\logo1\5_White_logo_on_black_394x63.png" />
-    <Content Include="Content\image\logo1\6_Primary_logo_on_color2_394x63.png" />
     <Content Include="Content\image\logo2.png" />
     <Content Include="Content\image\logo3.gif" />
     <Content Include="Content\image\logo4.png" />

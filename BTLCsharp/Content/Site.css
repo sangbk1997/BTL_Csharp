@@ -93,6 +93,32 @@
     background-position:center;
     color:white;
 }
+.wrapperLogin {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    overflow: auto;
+    left: 0px;
+    bottom: 0px;
+    background-image: url('/Content/image/landscape3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.wrapperSignUp {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: auto;
+    bottom: 0px;
+    background-image: url('/Content/image/landscape5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 .tab-link {
     position: fixed;
@@ -695,7 +721,6 @@ a img {
 }
 
 
-
 /*CSS cho trang đăng ký thành viên*/
 .modal {
     /*display: none;*/ /* Hidden by default */
@@ -706,7 +731,9 @@ a img {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: #474e5d;
+    /*background-color: #474e5d;*/
+    background-color: blue;
+    opacity: 0.2;
 }
 
 /* Modal Content/Box */
