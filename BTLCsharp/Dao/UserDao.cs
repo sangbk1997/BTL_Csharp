@@ -8,10 +8,10 @@ namespace BTLCsharp.Dao
 {
     public class UserDao
     {
-        Model db = null;
+        Model2 db = null;
         public UserDao()
         {
-            db = new Model();
+            db = new Model2();
         }
         public int Insert(User entity)
         {
@@ -45,7 +45,7 @@ namespace BTLCsharp.Dao
                 return false;
             }
         }
-        public bool Update(User entity)
+        public bool UpdateUser(User entity)
         {
             try
             {
@@ -67,9 +67,52 @@ namespace BTLCsharp.Dao
             }
         }
 
+        public bool UpdateCategory(Category entity)
+        {
+            try
+            {
+                var category = db.Categories.Find(entity.idCategory);
+                category.briefIntroduce = entity.briefIntroduce;
+                category.urlImg = entity.urlImg;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateAudio(Audio entity)
+        {
+            try
+            {
+                var audio = db.Audios.Find(entity.idAudio);
+                audio.content = entity.content;
+                audio.urlAudio = entity.urlAudio;
+                audio.level = entity.level;
+                db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
         public User GetById(string userName)
         {
-            return db.Users.SingleOrDefault(x => x.username == userName);
+            return db.Users.SingleOrDefault(x => x.meta_username == userName);
+        }
+
+        public Category GetCategoryById(string categoryName)
+        {
+            return db.Categories.SingleOrDefault(x => x.meta_Category == categoryName);
+        }
+
+        public Audio GetAudioById(string audioName)
+        {
+            return db.Audios.SingleOrDefault(x => x.meta_AudioName == audioName);
         }
 
         public User ViewDetail(int id)
@@ -77,9 +120,15 @@ namespace BTLCsharp.Dao
             return db.Users.Find(id);
         }
 
+        public Audio ViewDetailAudio(string id)
+        {
+            int temp = Int32.Parse(id);
+            return db.Audios.SingleOrDefault(x => x.idAudio == temp);
+        }
+
         public int Login(string userName, string password)
         {
-            var result = db.Users.SingleOrDefault(x => x.username == userName);
+            var result = db.Users.SingleOrDefault(x => x.meta_username == userName);
             if(result == null)
             {
                 return 0;
@@ -113,7 +162,7 @@ namespace BTLCsharp.Dao
 
         public  bool checkUserName(string userName)
         {
-            return db.Users.Count(x => x.username == userName) > 0;
+            return db.Users.Count(x => x.meta_username == userName) > 0;
         }
 
         public bool checkEmail(string email)
@@ -123,8 +172,12 @@ namespace BTLCsharp.Dao
 
         public bool checkCategory(string category)
         {
-            return db.Categories.Count(x => x.Category1 == category) > 0;
+            return db.Categories.Count(x => x.meta_Category == category) > 0;
         }
-        
+        public bool checkAudio(string audioName)
+        {
+            return db.Audios.Count(x => x.meta_AudioName == audioName) > 0;
+        }
+       
     }
 }

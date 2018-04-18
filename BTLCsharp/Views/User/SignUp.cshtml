@@ -18,6 +18,7 @@
 </head>
 <body>
     <div class="wrapperSignUp">
+        <div class="modal"></div>
         <div id="idSignUp">
             @using (Html.BeginForm())
         {
@@ -42,6 +43,7 @@
                     @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "label" })
                     <div>
                         @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "inputData", @placeholder = "Enter Username" } })
+                        <div style="color: orangered; font-size: 14px; margin: 10px;">Note : Don't use special characters (', . ! ' " \ / ... ') which is automatically removed ! </div>
                         @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
                     </div>
                 </div>

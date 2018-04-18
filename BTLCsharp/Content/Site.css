@@ -88,25 +88,29 @@
     left: 0px;
     bottom: 0px;
     background-image: url("image/wrapper.jpg");
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position:center;
-    color:white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
 }
+
 .wrapperLogin {
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0px;
-    overflow: auto;
     left: 0px;
+    overflow: auto;
     bottom: 0px;
-    background-image: url('/Content/image/landscape3.jpg');
+    background-image: url("/Content/image/landscape3.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .wrapperSignUp {
+    width: 100%;
+    height: 100%;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -114,7 +118,34 @@
     left: 0px;
     overflow: auto;
     bottom: 0px;
-    background-image: url('/Content/image/landscape5.jpg');
+    background-image: url("/Content/image/landscape5.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.wrapperCategory {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: auto;
+    bottom: 0px;
+    background-image: url("../Content/image/landscape2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.wrapperSubmitAudio {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: auto;
+    bottom: 0px;
+    background-image: url("../Content/image/landscape4.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -133,22 +164,22 @@
         font-size: 18px;
     }
 
-.btnLearn a{
+.btnLearn a {
     text-decoration: none;
     padding: 20px 40px;
     background-color: #384;
     color: white;
-    border : 1px solid #244;
-    border-radius:10px;
+    border: 1px solid #244;
+    border-radius: 10px;
     font-size: 25px;
     box-shadow: 0px 2px 10px 2px #e49709;
-
 }
-.btnLearn a:hover, .btnLearn a:focus{
-    text-decoration: none;
-    color: purple;
 
-}
+    .btnLearn a:hover, .btnLearn a:focus {
+        text-decoration: none;
+        color: purple;
+    }
+
 a:hover, a:focus {
     font-weight: bolder;
     color: red;
@@ -167,7 +198,8 @@ a:hover, a:focus {
     font-size: 25px;
     font-weight: bold;
 }
-.curtain{
+
+.curtain {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -175,7 +207,7 @@ a:hover, a:focus {
     left: 0px;
     bottom: 0px;
     background-color: black;
-    opacity:0.7;
+    opacity: 0.7;
 }
 
 
@@ -222,30 +254,35 @@ a:hover, a:focus {
     margin: 30px 40px;
 }
 
-.btnSignUp2, .btnLogin2{
+.btnSignUp2, .btnLogin2 {
     padding: 10px 30px;
     border-radius: 10px;
 }
-.btnSignUp2{
+
+.btnSignUp2 {
     background-color: blue;
     box-shadow: 5px 1px 10px 1px #e49709;
 }
+
 .btnLogin2 {
     background-color: forestgreen;
     box-shadow: 5px 1px 10px 1px #b30a50;
 }
 
-.btnSignUp2 a, .btnLogin2 a{
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-}
-.btnSignUp2:hover{
+    .btnSignUp2 a, .btnLogin2 a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+.btnSignUp2:hover {
     background-color: darkblue;
 }
+
 .btnLogin2:hover {
     background-color: green;
 }
+
 .link {
     float: right;
     margin-right: 10px;
@@ -437,9 +474,10 @@ a:hover, a:focus {
 }
 
 /* Position the "next button" to the right */
-.prev{
+.prev {
     left: 0;
 }
+
 .next {
     right: 0;
     border-radius: 3px 0 0 3px;
@@ -514,33 +552,29 @@ a:hover, a:focus {
     }
 }
 
-.main-content {
-    height: 2000px;
-    width: 80%;
-    float: left;
-}
 
 .Content {
-    height:auto;
+    height: auto;
     width: 100%;
     background-color: white;
 }
 
 .contentDetail {
-    margin: 20px;
+    width: 79%;
+    float: left;
     padding: 40px;
     border-left: #e49709 2px solid;
     background-color: white;
-    height: 1900px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0px 5px 10px 5px #672;
+    margin: 10px 5px;
 }
 
 .popularAudio {
-    margin: 20px 0px;
-}
-
-.Category {
+    height: auto;
+    width: 90%;
+    margin: 20px auto;
 }
 
 .btnTitle {
@@ -557,6 +591,9 @@ a:hover, a:focus {
     overflow: hidden;
     text-align: center;
     margin: 20px 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .audioName {
@@ -567,19 +604,41 @@ a:hover, a:focus {
     font-size: 15px;
 }
 
-.categoryContent {
-    background-color: #f4f1f5;
-    margin: 20px 30px;
-    color: purple;
+.Category{
+    height: auto;
+    width: 90%;
+    margin: 20px auto;
 }
 
+.categoryContent {
+    background-color: #f4f1f5;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px 2px #672;
+    margin: 20px 30px;
+    color: purple;
+    height: 100px;
+}
+    .categoryContent:hover, .categoryContent:focus{
+        border: 1px solid orange;
+        background-color: #bff0f5;
+        cursor : pointer;
+    }
+
+    .description {
+        text-overflow: ellipsis;
+        white-space: normal;
+        font-size: 12px;
+        overflow: hidden;
+    }
 .imgInfo {
     padding: 10px;
 }
 
 .img img {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 90px;
+    margin: auto;
+    border-radius: 5px;
 }
 /* Định Dạng CSS cho Sidebar */
 .sidebar {
@@ -631,17 +690,20 @@ a {
     opacity: 0.7;
     margin-bottom: 10px;
 }
-.contentText:hover{
-    opacity: 0.9;
+
+    .contentText:hover {
+        opacity: 0.9;
+    }
+
+.hightlight:hover {
+    color: blue;
+    font-weight: bold;
 }
 
-.hightlight:hover{
-    color: blue;
-    font-weight:bold;
-}
-.aboutText:hover{
+.aboutText:hover {
     color: forestgreen;
 }
+
 .contact {
     margin: 50px 0px;
     height: 200px;
@@ -677,23 +739,14 @@ a {
 
 /* Định dạng trang các chế độ của một bài audio */
 
-.wrapperModes {
-    height: 800px;
-    width : 80%;
-    padding: 10px 100px;
-    float: left;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px 2px #672;
-}
-
 .infoAudio {
     margin: 20px 50px;
 }
 
 .level {
     font-size: 25px;
-    color: #b30a50;
-    background-color: #b3e9bc;
+    color: white;
+    background-color: #9299d1;
     border-left: 10px solid #e49709;
     padding: 15px 20px;
     border-radius: 10px;
@@ -725,19 +778,17 @@ a img {
 .modal {
     /*display: none;*/ /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     /*background-color: #474e5d;*/
-    background-color: blue;
-    opacity: 0.2;
+    background-color: #100f0f;
+    opacity: 0.5;
 }
-
 /* Modal Content/Box */
-.containerSignUp, .containerLogin, .containerCategory {
+.containerSignUp, .containerLogin, .containerCategory, .containerSubmitAudio {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
@@ -747,11 +798,13 @@ a img {
     box-shadow: 0px 1px 10px 1px #632;
     position: relative;
 }
-h1{
+
+h1 {
     color: forestgreen;
     text-align: center;
 }
-.inputData{
+
+.inputData {
     width: 100%;
     height: 30px;
     background-color: #f2f2f2;
@@ -759,11 +812,13 @@ h1{
     padding: 10px;
     font-weight: bold;
 }
-.inputData:hover, .inputData:focus{
-    background-color: #ddd;
-    box-shadow: 0px 1px 5px 1px #86f2e2;
-}
-.label{
+
+    .inputData:hover, .inputData:focus {
+        background-color: #ddd;
+        box-shadow: 0px 1px 5px 1px #86f2e2;
+    }
+
+.label {
     font-weight: bold;
     font-size: 18px;
     color: purple;
@@ -771,26 +826,27 @@ h1{
     margin-top: 20px;
 }
 
-.dropList{
+.dropList {
     width: 50%;
     margin: 10px auto;
     color: green;
     font-size: 18px;
     padding: 10px;
     font-weight: bold;
-
 }
 
-.btnCancel, .btnSignUp, .btnLogin{
+.btnCancel, .btnSignUp, .btnLogin {
     padding: 7px 100px;
     font-size: 20px;
     color: white;
     font-weight: bold;
 }
-.btnCancel{
+
+.btnCancel {
     background-color: orangered;
     border-radius: 20px;
 }
+
 .btnSignUp, .btnLogin {
     background-color: #52a420;
     border-radius: 20px;
@@ -800,12 +856,13 @@ h1{
     background-color: red;
     box-shadow: 0px 2px 10px 2px blue;
 }
-.btnSignUp:hover,.btnLogin:hover{
+
+.btnSignUp:hover, .btnLogin:hover {
     background-color: green;
     box-shadow: 0px 2px 10px 2px blue;
 }
 
-.close{
+.close {
     font-size: 40px;
     font-weight: bold;
     top: 5px;
@@ -813,21 +870,24 @@ h1{
     position: absolute;
     color: black;
 }
-.close:hover{
-    cursor: pointer;
-    font-size: 50px;
-}
+
+    .close:hover {
+        cursor: pointer;
+        font-size: 50px;
+    }
 
 /*Định dạng form submit Audio*/
 
-.containerForm h2{
+.containerForm h2 {
     text-align: center;
     color: orangered;
     font-size: 30px;
 }
-.containerForm h4{
+
+.containerForm h4 {
     color: blue;
 }
+
 .containerForm {
     width: 60%;
     border-radius: 20px;
@@ -839,22 +899,23 @@ h1{
     position: relative;
 }
 
-.btnSubmit{
+.btnSubmit {
     width: 50%;
     margin: auto;
-    padding: 10px ;
+    padding: 10px;
     color: white;
     font-size: 25px;
     background-color: #42a52b;
     border-radius: 10px;
     box-shadow: 0px 1px 10px 1px #e49709;
 }
-.btnSubmit:hover{
-    font-weight: bolder;
-    background-color: green;
-}
 
-.inputTextArea{
+    .btnSubmit:hover {
+        font-weight: bolder;
+        background-color: green;
+    }
+
+.inputTextArea {
     border-radius: 20px;
     border: 1px solid grey;
     overflow: auto;
@@ -862,7 +923,58 @@ h1{
     padding: 20px;
 }
 
-.text-danger{
+.text-danger {
     color: red;
     font-size: 14px;
+}
+
+
+
+/*Dinh dang Css cho trang modeAccess*/
+.modeAccess{
+    opacity: 0.9;
+}
+.modeAccess:hover {
+    border: 2px solid #1bc8e8;
+    box-shadow: 0px 2px 5px 2px #a04699;
+    opacity: 1;
+}
+
+
+.resultCorrectionMode{
+    width: 50%;
+    margin: 20px auto;
+    background-color: #eae287;
+    border: 1px solid #672;
+    overflow: auto;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px; 
+    box-shadow: 0px 1px 10px 1px black;
+}
+
+
+.contentAudio{
+    clear:both;
+    width: 80%;
+    padding: 15px;
+    margin: 10px auto;
+    border: 1px solid #672;
+    border-radius: 10px;
+}
+.inputText {
+    width: 80%;
+    margin: 20px auto;
+}
+.inputText input{
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    color:blue;
+    border-radius: 5px;
+    border: 1px solid #6c8fe5;
+
+}
+.inputText input:hover, {
+    background-color: antiquewhite;
 }

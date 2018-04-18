@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "fullMode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    var audio = ViewBag.audio;
+}
+<div class="contentDetail">
+    <div class="infoAudio col-12">
+        <div class="level col-2">
+
+            Level : @audio.level
+
+        </div>
+        <div class="nameAudio col-10">
+            @audio.audioName
+
+        </div>
+    </div>
+    <div class="contentAudio">
+        @audio.content
+    </div>
+    <div class="inputText">
+        <input type="text" name="inputLetter" value="" placeholder="Type a a word here " />
+    </div>
+</div>

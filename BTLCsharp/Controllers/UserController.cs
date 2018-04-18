@@ -6,6 +6,7 @@ using BTLCsharp.Dao;
 using System.Web.Mvc;
 using BTLCsharp.Models;
 using BTLCsharp.EF;
+using TempClass;
 
 namespace BTLCsharp.Controllers
 {
@@ -23,7 +24,7 @@ namespace BTLCsharp.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                if (dao.checkUserName(obj.username))
+                if (dao.checkUserName(TempClass.FormatString.removeOddLetter(obj.username)))
                 {
                     ModelState.AddModelError("", "This username is exist ! Please choose another name.");
 
@@ -32,17 +33,20 @@ namespace BTLCsharp.Controllers
                 {
                     var user = new User();
                     user.username = obj.username;
+                    user.meta_username = TempClass.FormatString.removeOddLetter(obj.username);
                     user.password = obj.password;
                     user.email = obj.email;
                     user.address = obj.address;
                     user.joinDate = DateTime.Now;
-                    user.extraInfo = "Nothing";
-                    user.modeaccess = 0;
+                    user.age = obj.age;
+                    user.modeAccess = 0;
                     user.score = 0;
                     var result = dao.Insert(user);
+                    string alert = "Nickname : " + user.meta_username.ToString();
                     if(result > 0)
                     {
-                        ViewBag.Success = "You have successfully registered an account with Us !";
+                        ModelState.AddModelError("","Sign Up Success !");
+                        ModelState.AddModelError("", alert);
                         obj = new SignUpModel();
                         
                     }
@@ -67,15 +71,13 @@ namespace BTLCsharp.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(obj.username, obj.password);
+                var result = dao.Login(TempClass.FormatString.removeOddLetter(obj.username), obj.password);
                 if(result == 1)
                 {
-                    var user = dao.GetById(obj.username);
-                    var userSession = user.username;
+                    var user = dao.GetById(TempClass.FormatString.removeOddLetter(obj.username));
+                    var userSession = TempClass.FormatString.removeOddLetter(obj.username);
                     Session.Add("USER_SESSION", userSession);
-                    return Redirect("/");
-
-
+                    return Redirect("/Home/Index");
                 }
                 else if(result == 0)
                 {

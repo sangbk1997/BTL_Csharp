@@ -5,3 +5,9 @@ F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.csprojResolveAssemblyRefer
 F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.csproj.CoreCompileInputs.cache
 F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.exe
 F:\DotNet\BTL\BTLCsharp\TempClass\obj\Debug\TempClass.pdb
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\bin\Debug\TempClass.exe.config
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\bin\Debug\TempClass.exe
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\bin\Debug\TempClass.pdb
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\obj\Debug\TempClass.csproj.CoreCompileInputs.cache
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\obj\Debug\TempClass.exe
+F:\DotNet\BTLCsharp\BTL_Csharp\TempClass\obj\Debug\TempClass.pdb

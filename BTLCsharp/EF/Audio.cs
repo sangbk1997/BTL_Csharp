@@ -26,14 +26,11 @@ namespace BTLCsharp.EF
 
         public int? level { get; set; }
 
-        [StringLength(1000)]
+        [StringLength(2000)]
         public string content { get; set; }
 
-        [StringLength(100)]
-        public string urlAudio { get; set; }
-
         [StringLength(500)]
-        public string extraInfo { get; set; }
+        public string urlAudio { get; set; }
 
         public DateTime? addedDate { get; set; }
 

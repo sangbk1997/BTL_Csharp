@@ -12,20 +12,19 @@ namespace BTLCsharp.EF
         [Key]
         public int idCategory { get; set; }
 
-        [Column("Category")]
-        [StringLength(50)]
-        public string Category1 { get; set; }
+        [StringLength(500)]
+        public string nameCategory { get; set; }
 
         [Column("meta-Category")]
-        [StringLength(50)]
+        [StringLength(500)]
         public string meta_Category { get; set; }
 
         public int? idUser { get; set; }
 
-        [StringLength(500)]
+        [StringLength(1000)]
         public string briefIntroduce { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string urlImg { get; set; }
 
         public DateTime? addedDate { get; set; }

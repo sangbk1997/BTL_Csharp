@@ -31,6 +31,3 @@ function showSlides(n) {
 
 // Xử lý cho nút tắt màn hình hiện tại quay lại về trang chủ 
 
-function closeCurrentWindown{
-    alert("Xin chào");
-}

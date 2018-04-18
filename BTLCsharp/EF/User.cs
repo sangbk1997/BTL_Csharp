@@ -18,14 +18,14 @@ namespace BTLCsharp.EF
 
         public int id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string username { get; set; }
 
         [Column("meta-username")]
-        [StringLength(50)]
+        [StringLength(100)]
         public string meta_username { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string email { get; set; }
 
         [StringLength(50)]
@@ -38,10 +38,7 @@ namespace BTLCsharp.EF
 
         public DateTime? joinDate { get; set; }
 
-        public int? modeaccess { get; set; }
-
-        [StringLength(500)]
-        public string extraInfo { get; set; }
+        public int? modeAccess { get; set; }
 
         public int? score { get; set; }
 

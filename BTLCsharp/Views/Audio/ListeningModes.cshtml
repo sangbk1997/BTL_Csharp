@@ -5,33 +5,39 @@
 }
 
 <div class="space"></div>
-<div class="wrapperModes col-7">
+@{ 
+    var audio = ViewBag.audio;
+}
+<div class="contentDetail col-7">
     <div class="infoAudio col-12">
         <div class="level col-2">
-            Level 3
+
+            Level : @audio.level
+            
         </div>
         <div class="nameAudio col-10">
-            The Sun in my heart
+            @audio.audioName
+            
         </div>
     </div>
     <br><br><br>
     <div class="modes col-12">
         <div class="col-12" style="text-align:center">
             <div class="alignCenter">
-                <a href="#"><img src="~/Content/image/correctionmode.png" alt=""></a>
+                <a class="modeAccess" href="@Url.Action("correctionMode","Audio", new { id = audio.idAudio })"><img src="~/Content/image/correctionmode.png" alt=""></a>
             </div>
         </div>
         <div class="col-12">
             <div class="col-6">
-                <a href="#"><img src="~/Content/image/fullmode.png" alt=""></a>
+                <a class="modeAccess" href="@Url.Action("fullMode","Audio", new { id = audio.idAudio })"><img src="~/Content/image/fullmode.png" alt=""></a>
             </div>
             <div class="col-6">
-                <a href="#"><img src="~/Content/image/quickmode.png" alt=""></a>
+                <a class="modeAccess" href="@Url.Action("quickMode","Audio", new { id = audio.idAudio })"><img src="~/Content/image/quickmode.png" alt=""></a>
             </div>
         </div>
         <div class="col-12" style="text-align:center">
             <div class="alignCenter">
-                <a href="#"><img src="~/Content/image/blankmode.png" alt=""></a>
+                <a class="modeAccess" href="@Url.Action("blankMode","Audio", new { id = audio.idAudio })"><img src="~/Content/image/blankmode.png" alt=""></a>
             </div>
         </div>
     </div>

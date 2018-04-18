@@ -8,28 +8,38 @@
         </div>
         <div class="login-signup col-7">
             <div class="btnSignUp-btnLogin">
-                <span class="btnSignUp2">@Html.ActionLink("SignUp", "SignUp", "User")</span>
-                <span class="btnLogin2">@Html.ActionLink("Login", "Login", "User")</span>
+                
+                @if(Session["USER_SESSION"] != null)
+                {
+                     <span class="btnSignUp2">@Html.ActionLink("LogOut", "LogOut", "User")</span>
+                     <span style="background-color:#eb902d; padding: 10px 15px ; color : purple; border-radius: 10px;"> <span style="color: white; font-size: 18px;">User:</span> @Session["USER_SESSION"]</span>
+
+                }
+                else {
+                     <span class="btnSignUp2">@Html.ActionLink("SignUp", "SignUp", "User")</span>
+                     <span class="btnLogin2">@Html.ActionLink("Login", "Login", "User")</span>
+                }
+
             </div>
             <br>
             <div class="link">
 
-                <a href="http://zingme.com">
+                <a href="http://zingme.com" target="_blank">
                     <img src="~/Content/image/zingme.png" alt="">
                 </a>
-                <a href="http://youtube.com">
+                <a href="http://youtube.com" target="_blank">
                     <img src="~/Content/image/youtube1.png" alt="">
                 </a>
-                <a href="http://twitter.com">
+                <a href="http://twitter.com" target="_blank">
                     <img src="~/Content/image/twitter.jpg" alt="">
                 </a>
-                <a href="http://linkedin.com">
+                <a href="http://linkedin.com" target="_blank">
                     <img src="~/Content/image/linkdin1.png" alt="">
                 </a>
-                <a href="http://google.com">
+                <a href="http://google.com" target="_blank">
                     <img src="~/Content/image/google1.jpg" alt="">
                 </a>
-                <a href="http://facebook.com">
+                <a href="http://facebook.com" target="_blank">
                     <img src="~/Content/image/fb1.png" alt="">
                 </a>
             </div>

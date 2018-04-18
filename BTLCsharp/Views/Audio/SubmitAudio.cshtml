@@ -13,18 +13,18 @@
     @Styles.Render("~/Content/Site.css")
 </head>
 <body>
-    <div class="modal">
-        <div class="formSubmitAudio">
-            <div class="containerForm">
-                 <span class="close" onclick="return hello();">&times;</span>
-                <h2>Submit Audio</h2>
+    <div class="wrapperSubmitAudio">
+        <div class="modal"></div>
+            <div class="idSubmitAudio">
+               
 
                 @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
 
-                <div>
-                    <h4>FormInputAudio</h4>
+                <div class="containerSubmitAudio" style="width:65%">
+                    <span class="close" onclick='window.location = "@Url.Action("Index", "Home")";'>&times;</span>
+                    <h1>Submit Audio</h1>
                     <hr />
                     <br />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -49,17 +49,19 @@
                         @Html.LabelFor(model => model.categoryAudio, htmlAttributes: new { @class = "label" })
                         <div>
                             @{
-                                var listCategories = new List<SelectListItem>();
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                                listCategories.Add(new SelectListItem { Text = "item1", Value = "item1" });
-                            
+                                var db = new BTLCsharp.EF.Model2();
+
+                                var listCategories = db.Categories.ToList();
+                                var listNameCategory = new List<SelectListItem>();
+                                foreach(var obj in listCategories)
+                                {
+                                    listNameCategory.Add(new SelectListItem { Text = obj.meta_Category, Value = obj.meta_Category });
+                                }
+
+                                listNameCategory.Add(new SelectListItem { Text = "Other", Value = "Undefined !" });
+
                             }
-                            @Html.DropDownListFor(model => model.categoryAudio,listCategories, htmlAttributes:new {@class="dropList", @style="color: green; padding: 5px; width: 50%; margin: 10px auto; font-size: 18px; text-align: center;"})
+                            @Html.DropDownListFor(model => model.categoryAudio, listNameCategory, htmlAttributes: new { @class = "dropList", @style = "color: green; padding: 5px; width: 50%; margin: 10px auto; font-size: 18px; text-align: center;" })
                             @Html.ValidationMessageFor(model => model.categoryAudio, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -91,8 +93,6 @@
                 </div>
         }
             </div>
-
-        </div>
     </div>
 </body>
 </html>

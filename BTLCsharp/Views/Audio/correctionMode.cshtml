@@ -1,0 +1,57 @@
+﻿
+@model BTLCsharp.Models.inputDataModal
+
+@{
+    ViewBag.Title = "correctionMode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    var audio = ViewBag.audio;
+}
+<div class="contentDetail" style="text-align: center;">
+    <div class="infoAudio col-12">
+        <div class="level col-2">
+
+            Level : @audio.level
+
+        </div>
+        <div class="nameAudio col-10">
+            @audio.audioName
+
+        </div>
+    </div>
+    <div style="width: 80%; margin: 50px auto; text-align: center;">
+        <h3>Play Audio</h3>
+        <div>
+            <audio controls="controls"  style="width: 80%; margin: auto;">
+                <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
+            </audio>
+        </div>
+    </div>
+    <div class="inputText">
+        @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.LabelFor(model => model.value, htmlAttributes: new { @class = "label" })
+            <div>
+                @Html.TextAreaFor(model => model.value, htmlAttributes: new { @class = "inputTextArea", @rows = "10", @cols = "80" })
+                @Html.ValidationMessageFor(model => model.value, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div>
+            <div style="text-align: center;">
+                <input type="submit" value="Check" class="btnSubmit" style="width: 20%;" />
+            </div>
+        </div>
+
+}
+        <div id="result" class="resultCorrectionMode" style="display:@ViewBag.display;">
+            <div>
+                @ViewBag.result
+            </div>
+        </div>
+    </div>
+</div>

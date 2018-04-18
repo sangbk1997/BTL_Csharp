@@ -156,15 +156,14 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\Audio.cs" />
     <Compile Include="EF\Category.cs" />
-    <Compile Include="EF\Model.cs" />
-    <Compile Include="EF\Model1.cs" />
+    <Compile Include="EF\Model2.cs" />
     <Compile Include="EF\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CategoryModal.cs" />
     <Compile Include="Models\FormInputAudio.cs" />
-    <Compile Include="Models\ListItems.cs" />
+    <Compile Include="Models\inputDataModal.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,15 +176,22 @@
     <Content Include="Content\image\address.jpg" />
     <Content Include="Content\image\bg1.jpg" />
     <Content Include="Content\image\blankmode.png" />
+    <Content Include="Content\image\corporateDevelopment.jpg" />
     <Content Include="Content\image\correctionmode.png" />
+    <Content Include="Content\image\diningout.jpg" />
+    <Content Include="Content\image\entertainment.jpg" />
     <Content Include="Content\image\fb1.png" />
     <Content Include="Content\image\fb2.jpg" />
+    <Content Include="Content\image\financeBud.jpg" />
     <Content Include="Content\image\fullmode.png" />
+    <Content Include="Content\image\generalbussiness.jpg" />
     <Content Include="Content\image\gmail1.png" />
     <Content Include="Content\image\gmail2.svg" />
     <Content Include="Content\image\google1.jpg" />
     <Content Include="Content\image\google2.png" />
+    <Content Include="Content\image\health.jpg" />
     <Content Include="Content\image\home.jpg" />
+    <Content Include="Content\image\housingcorporateproperty.jpg" />
     <Content Include="Content\image\landscape2.jpg" />
     <Content Include="Content\image\landscape3.jpg" />
     <Content Include="Content\image\landscape4.jpg" />
@@ -193,19 +199,34 @@
     <Content Include="Content\image\lanscape1.jpg" />
     <Content Include="Content\image\linkdin1.png" />
     <Content Include="Content\image\linkdin2.jpg" />
+    <Content Include="Content\image\login.jpg" />
+    <Content Include="Content\image\loginbg.jpg" />
+    <Content Include="Content\image\logo.gif" />
     <Content Include="Content\image\logo.png" />
+    <Content Include="Content\image\logo10.png" />
+    <Content Include="Content\image\logo2.gif" />
     <Content Include="Content\image\logo2.png" />
     <Content Include="Content\image\logo3.gif" />
     <Content Include="Content\image\logo4.png" />
     <Content Include="Content\image\logo5.png" />
     <Content Include="Content\image\mail.jpg" />
+    <Content Include="Content\image\manufacturing.jpg" />
+    <Content Include="Content\image\office.jpg" />
+    <Content Include="Content\image\personel.png" />
     <Content Include="Content\image\phone.jpg" />
+    <Content Include="Content\image\purchasing.jpg" />
     <Content Include="Content\image\quickmode.png" />
+    <Content Include="Content\image\signupbg.jpg" />
     <Content Include="Content\image\slider1.jpg" />
     <Content Include="Content\image\success.jpg" />
+    <Content Include="Content\image\technicalarea.jpg" />
+    <Content Include="Content\image\travel.jpg" />
+    <Content Include="Content\image\twitter.jpg" />
+    <Content Include="Content\image\twitter.png" />
     <Content Include="Content\image\wrapper.jpg" />
     <Content Include="Content\image\youtube1.png" />
     <Content Include="Content\image\youtube2.png" />
+    <Content Include="Content\image\zingme.png" />
     <Content Include="Content\myFunction.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -214,7 +235,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
+    <Content Include="Views\ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\image\logo1.zip" />
@@ -253,6 +274,10 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Audio\SubmitAudio.cshtml" />
     <Content Include="Views\Audio\addCategory.cshtml" />
+    <Content Include="Views\Audio\correctionMode.cshtml" />
+    <Content Include="Views\Audio\fullMode.cshtml" />
+    <Content Include="Views\Audio\quickMode.cshtml" />
+    <Content Include="Views\Audio\blankMode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,6 +297,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TempClass\TempClass.csproj">
+      <Project>{a6e2fce4-4c2b-453c-af83-c05c7ef7cc51}</Project>
+      <Name>TempClass</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

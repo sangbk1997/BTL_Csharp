@@ -28,7 +28,7 @@ namespace TempClass
         "ÝỲỴỶỸ"
             };
 
-        public static string[] arrayStr = new string[] {"!", "\"", "\\","/","-", "  " };
+        public static string[] arrayStr = new string[] {"!",",",".", "\"", "\\","/","-", "  " };
         public static string filterSeal(string str)
         {
             // thay thế và lọc dấu từng char
@@ -63,10 +63,15 @@ namespace TempClass
                     str = str.Replace(arrayStr[i], " ");
                 }
             }
-            while (str.Contains("  "))
+            str = str.ToLower();
+            return str;
+        }
+        public static string friendUrl(string str)
+        {
+            str = str.Trim();
+            while(str.Contains("  "))
             {
                 str = str.Replace("  ", " ");
-                Console.Write("Hello");
             }
             str = str.Replace(" ", "-");
             str = str.ToLower();
@@ -84,7 +89,7 @@ namespace TempClass
         static void Main(string[] args)
         {
             string str = "Xin chào bạn      mình là Sang  ! \\ -    hiện đang là sinh viên BK    ";
-            str = FormatString.filterSeal(str);
+            //str = FormatString.filterSeal(str);
             str = FormatString.removeOddLetter(str);
             Console.WriteLine(str);
             string[] temp = FormatString.splitString(str);
@@ -96,4 +101,3 @@ namespace TempClass
         }
     }
 }
-jj
