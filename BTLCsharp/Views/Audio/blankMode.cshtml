@@ -19,10 +19,61 @@
             @audio.audioName
 
         </div>
-        
+    </div>
+    <div style="width: 80%; margin: 50px auto; text-align: center;">
+        <h3>Play Audio</h3>
+        <div>
+            <audio controls="controls" style="width: 80%; margin: auto;">
+                <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
+            </audio>
+        </div>
     </div>
     <div class="contentAudio">
-        @audio.content
+        @{
+            string contentAudio = ViewBag.contentAudio;
+            string[] arrayString = contentAudio.Split(new char[] { ' ' });
+            for (int i = 0; i < arrayString.Length; i++)
+            {
+                <span class="partString" style="display: none;">@arrayString[i] </span>
+            }
+        }
     </div>
+    <div class="inputText">
+        <input type="text" value="" placeholder="Type a first letter " id="inputLetter" onkeyup="checkQuickMode();">
+    </div>
+    <div style="text-align: center;">
+        <input type="button" value="NextString" onclick="nextString();" class="btnNext">
+    </div>
+    <script>
+        var index = 0;
+        function checkQuickMode() {
+            alert("Hello");
+            var input = document.getElementById("inputLetter");
+            var listString = document.getElementsByClassName("partString");
+            var currentString = listString[index];
+            var temp1 = input.value.toLowerCase();
+
+            var temp2 = currentString.innerHTML.toLowerCase();
+            alert(temp1);
+            alert(temp2);
+            if (temp2.indexOf(temp1) == 0) {
+                alert("Right");
+                currentString.setAttribute("style", "display: display");
+                index++;
+                input.value = "";
+            }
+            else {
+                alert("Wrong !");
+                input.value = "";
+            }
+        }
+
+        function nextString() {
+            var listString = document.getElementsByClassName("partString");
+            var currentString = listString[index];
+            currentString.setAttribute("style", "display: display");
+            index++;
+        }
+    </script>
 </div>
 

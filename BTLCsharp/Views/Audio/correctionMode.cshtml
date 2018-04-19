@@ -25,33 +25,130 @@
     <div style="width: 80%; margin: 50px auto; text-align: center;">
         <h3>Play Audio</h3>
         <div>
-            <audio controls="controls"  style="width: 80%; margin: auto;">
+            <audio controls="controls" style="width: 80%; margin: auto;">
                 <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
             </audio>
         </div>
     </div>
     <div class="inputText">
         @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div>
-            @Html.LabelFor(model => model.value, htmlAttributes: new { @class = "label" })
+        {
+            @Html.AntiForgeryToken()
             <div>
-                @Html.TextAreaFor(model => model.value, htmlAttributes: new { @class = "inputTextArea", @rows = "10", @cols = "80" })
-                @Html.ValidationMessageFor(model => model.value, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.value, htmlAttributes: new { @class = "label" })
+                <div>
+                    @Html.TextAreaFor(model => model.value, htmlAttributes: new { @class = "inputTextArea", @rows = "10", @cols = "80" })
+                    @Html.ValidationMessageFor(model => model.value, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
-        <div>
-            <div style="text-align: center;">
-                <input type="submit" value="Check" class="btnSubmit" style="width: 20%;" />
+            <div>
+                <div style="text-align: center;">
+                    <input type="submit" value="Check" class="btnSubmit" style="width: 20%;" />
+                </div>
             </div>
-        </div>
 
-}
+        }
+        <span></span>
         <div id="result" class="resultCorrectionMode" style="display:@ViewBag.display;">
+            <h2 style="color: black; text-align: center;">Standard Format </h2>
+            <hr />
             <div>
-                @ViewBag.result
+                <h2 style="font-size: 20px; color: blue;">Your Script</h2>
+                <div>
+                    @ViewData["inputData"]
+                </div>
             </div>
+            <div>
+                <hr />
+                <h2 style="font-size: 20px; color: blue;">Content</h2>
+                <div>
+                    @ViewData["contentAudio"]
+                </div>
+            </div>
+            <div>
+                <hr />
+                <h2 style="font-size: 20px; color: blue;">Longest Common Sequence</h2>
+                <div>
+                    @{
+                        List<string> list = (List<string>)ViewData["LSS"];
+                        if (list == null)
+                        {
+                            <span>NO WORDS MATCH WITH THE CONTENT ...!</span>
+                        }
+                        else
+                        {
+                            for (int i = list.Count - 1; i >= 0; i--)
+                            {
+                                <span>@list[i]</span>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div>
+                <hr />
+                <h2 style="font-size: 20px; color: blue;">Result</h2>
+                <div style="color: red; font-size: 15px;">Note: Red word is missing</div>
+                <div style="color: green; font-size: 15px;">Note: Blue word is right</div>
+                <br />
+                <div>
+                    @{
+                        List<string> listItems = (List<string>)ViewData["LSS"];
+                        if (listItems == null)
+                        {
+
+                            <span>No words are matched with the Content.</span>
+                        }
+                        else
+                        {
+
+                            @*string tempString = ViewData["inputData"].ToString();
+                                for (int i = listItems.Count - 1; i >= 0; i--)
+                                {
+                                    int length = listItems[i].Length;
+
+                                    if (tempString.Contains(listItems[i]))
+                                    {
+                                        int index = tempString.IndexOf(listItems[i]);
+                                        string showedString = tempString.Substring(0, index);
+                                        <span style="text-decoration: line-through">@showedString </span> <span style="color: green;">@listItems[i]</span>
+                                        tempString = tempString.Substring(index + length);
+                                    }
+
+                                }
+                                <span>@tempString</span>*@
+
+                            string contentAudio = ViewData["contentAudio"].ToString();
+                            string[] arrayString = contentAudio.Split(new char[] { ' ' });
+                            int indexed = 0;
+                            for (int i = listItems.Count - 1; i >= 0; i--)
+                            {
+                                for (int j = indexed; j < arrayString.Length; j++)
+                                {
+                                    if (listItems[i].Equals(arrayString[j]))
+                                    {
+                                        for (int k = indexed; k < j; k++)
+                                        {
+                                            <span style="color: red; text-decoration: line-through">@arrayString[k] </span>
+                                        }
+                                        <span style="color: green">@arrayString[j] </span>
+                                        indexed = j + 1;
+                                        continue;
+                                    }
+                                }
+                            }
+                            for(int i=indexed; i < arrayString.Length; i++)
+                            {
+                                        <span style="color: red; text-decoration: line-through">@arrayString[i] </span>
+                            }
+
+                        }
+                    }
+
+                </div>
+                <br />
+            </div>
+
         </div>
     </div>
 </div>

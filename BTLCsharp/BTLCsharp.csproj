@@ -164,6 +164,7 @@
     <Compile Include="Models\CategoryModal.cs" />
     <Compile Include="Models\FormInputAudio.cs" />
     <Compile Include="Models\inputDataModal.cs" />
+    <Compile Include="Models\ListItemsModal.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -20,10 +20,71 @@
 
         </div>
     </div>
+    <div style="width: 80%; margin: 50px auto; text-align: center;">
+        <h3>Play Audio</h3>
+        <div>
+            <audio controls="controls" style="width: 80%; margin: auto;">
+                <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
+            </audio>
+        </div>
+    </div>
     <div class="contentAudio">
-        @audio.content
+        @{
+            string contentAudio = ViewBag.contentAudio;
+            string[] arrayString = contentAudio.Split(new char[] { ' ' });
+            for (int i = 0; i < arrayString.Length; i++)
+            {
+                <span class="partString" style="display: none;">@arrayString[i]</span>
+            }
+        }
     </div>
     <div class="inputText">
-        <input type="text" name="inputLetter" value="" placeholder="Type a a word here " />
+        <input type="text" id="inputData" value="" placeholder="Type a word here " onkeyup="checkFullMode();" />
     </div>
+    <div style="text-align: center;">
+        <input type="button" value="Suggest" onclick="suggestLetter();" class="btnNext">
+        <span id="suggestedLetters" style="color: purple; font-weight:bold"></span>
+        <input type="button" value="NextString" onclick="nextString();" class="btnNext">
+    </div>
+    <script>
+        var index = 0;
+        var tempString = "";
+        var listString = document.getElementsByClassName("partString");
+        function checkFullMode() {
+            var input = document.getElementById("inputData");
+            var currentString = listString[index];
+            var temp1 = input.value.toLowerCase();
+            var temp2 = currentString.innerHTML.toLowerCase();
+            if (temp2.indexOf(temp1) == 0) {
+                input.value = input.value;
+                tempString = input.value;
+            }
+            else {
+                input.value = tempString;
+            }
+
+            if (temp1.length == temp2.length) {
+                currentString.setAttribute("style", "display: display");
+                input.value = "";
+                tempString = "";
+                index++;
+            }
+        }
+        function suggestLetter() {
+            var suggestedLetter = document.getElementById("suggestedLetters");
+            var letter = listString[index].innerHTML.substr(tempString.length, 1);
+            suggestedLetter.innerHTML = letter;
+
+        }
+
+        function nextString() {
+            listString[index].setAttribute("style", "display: display");
+            var input = document.getElementById("inputData");
+            input.value = "";
+            index++;
+        }
+        if (index == listString.length) {
+            alert("You have already completed the lession ! ");
+        }
+    </script>
 </div>

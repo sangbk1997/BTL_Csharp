@@ -942,9 +942,8 @@ h1 {
 
 
 .resultCorrectionMode{
-    width: 50%;
+    width: 80%;
     margin: 20px auto;
-    background-color: #eae287;
     border: 1px solid #672;
     overflow: auto;
     font-weight: bold;
@@ -975,6 +974,19 @@ h1 {
     border: 1px solid #6c8fe5;
 
 }
-.inputText input:hover, {
+.inputText input:hover{
     background-color: antiquewhite;
+}
+
+.btnNext{
+    padding:  10px 15px;
+    margin: 10px 20px;
+    background-color: forestgreen;
+    border-radius: 7px;
+    color: white;
+    font-size: 20px;
+}
+.btnNext:hover{
+    border: 1px solid blue;
+    opacity: 0.9;
 }

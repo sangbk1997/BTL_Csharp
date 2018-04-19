@@ -34,75 +34,44 @@ namespace BTLCsharp.Controllers
         [HttpPost]
         public ActionResult correctionMode(inputDataModal model)
         {
+           
             ViewBag.display = "display";
             db = new Model2();
             Audio obj = db.Audios.Find(TempData["id"]);
             ViewBag.audio = obj;
-            string contentAudio = Convert.ToString(obj.content.ToString());
+            string contentAudio = obj.content.ToString();
             string tempString = model.value.ToString();
-            tempString = TempClass.OrderSubSequence.formatString(tempString);
+            tempString = TempClass.functionClass.removeOddLetter(tempString);
+            tempString = tempString.ToLower();
+            contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
+            contentAudio = contentAudio.ToLower();
             string[] arrayTempString = tempString.Split(new char[] { ' ' });
-            ArrayList longestCommonSequence = TempClass.LCS.getLCS(arrayTempString, contentAudio);
-            /*
-            for (int i=0; i < longestCommonSequence.Count; i++)
-            {
-                string subString = longestCommonSequence[i].ToString();
-                int indexAdded = 0;
-                if (contentAudio.Contains(subString))
-                {
-                    string temp = "<span style = \"color: blue\" >" + subString + "</span > ";
-                    contentAudio = contentAudio.Replace(subString,temp);
-                    indexAdded = contentAudio.IndexOf(subString) + temp.Length;
-                }
-                else
-                {
-                    string temp = "<span style = \"color: gray ;text-decoration: line-through; font-size: 12px;\" >" + subString + "</span > ";
-
-                    string subEnd = contentAudio.Substring(indexAdded +1);
-                    contentAudio = contentAudio.Substring(0, indexAdded);
-                    contentAudio = string.Concat(contentAudio, temp, subEnd);
-                }
-            }
-            string resultString = "<span style = \"color: red\" >" + contentAudio + "</span > ";
-            ViewBag.result = resultString;
-            */
-            string resultString = "";
-            contentAudio = TempClass.OrderSubSequence.formatString(contentAudio);
-            string[] arrayContentAudio = contentAudio.Split(new char[] { ' ' });
-            for(int i=0; i<arrayContentAudio.Length; i++)
-            {
-                int find = 0;
-                for(int j=longestCommonSequence.Count-1; j>=0; j--)
-                {
-                    if (arrayContentAudio[i].Equals(longestCommonSequence[j]))
-                    {
-                        find = 1;
-                        string temp = "<span style=\"color:blue\">" +arrayContentAudio[i] + "</span>";
-                        longestCommonSequence.Remove(longestCommonSequence[j]);
-                        resultString = string.Concat(resultString, temp);
-                        continue;
-                    }
-                }
-                if(find == 0)
-                {
-                    string temp = arrayContentAudio[i];
-                    resultString = string.Concat(resultString, temp);
-                }
-            }
-            ViewBag.result = resultString;
+            List<string> listItems = TempClass.LCS.getLCS(arrayTempString, contentAudio);
+            ViewData["inputData"] = tempString;
+            ViewData["contentAudio"] = contentAudio;
+            ViewData["LSS"] = listItems;
             TempData.Keep("id");
             return View();
         }
+
         public ActionResult fullMode(int id)
         {
             db = new Model2();
-            ViewBag.audio = db.Audios.Find(id);
+            Audio audio = db.Audios.Find(id);
+            ViewBag.audio = audio;
+            string contentAudio = audio.content.ToString();
+            contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
+            ViewBag.contentAudio = contentAudio;
             return View();
         }
         public ActionResult quickMode(int id)
         {
             db = new Model2();
-            ViewBag.audio = db.Audios.Find(id);
+            Audio audio = db.Audios.Find(id);
+            ViewBag.audio = audio;
+            string contentAudio = audio.content.ToString();
+            contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
+            ViewBag.contentAudio = contentAudio;
             return View();
         }
         public ActionResult blankMode(int id)

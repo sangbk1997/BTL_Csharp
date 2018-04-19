@@ -20,10 +20,58 @@
 
         </div>
     </div>
+    <div style="width: 80%; margin: 50px auto; text-align: center;">
+        <h3>Play Audio</h3>
+        <div>
+            <audio controls="controls" style="width: 80%; margin: auto;">
+                <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
+            </audio>
+        </div>
+    </div>
     <div class="contentAudio">
-        <p>@audio.content</p>
+        @{
+            string contentAudio = ViewBag.contentAudio;
+            string[] arrayString = contentAudio.Split(new char[] { ' ' });
+            for (int i = 0; i < arrayString.Length; i++)
+            {
+                <span class="partString" style="display: none;">@arrayString[i]</span>
+            }
+        }
     </div>
     <div class="inputText">
-        <input type="text" name="inputLetter" value="" placeholder="Type a first letter of word " />
+        <input type="text" value="" placeholder="Type a first letter " id="inputLetter" onkeyup="checkQuickMode();">
     </div>
+    <div style="text-align: center;">
+        <input type="button" value="NextString" onclick="nextString();" class="btnNext">
+    </div>
+    <script>
+        var index = 0;
+        var listString = document.getElementsByClassName("partString");
+        function checkQuickMode() {
+            var input = document.getElementById("inputLetter");
+            var currentString = listString[index];
+            var temp1 = input.value.toLowerCase();
+
+            var temp2 = currentString.innerHTML.toLowerCase();
+            if (temp2.indexOf(temp1) == 0) {
+                currentString.setAttribute("style", "display: display");
+                index++;
+                input.value = "";
+            }
+            else {
+                input.value = "";
+            }
+        }
+
+        function nextString() {
+            var listString = document.getElementsByClassName("partString");
+            var currentString = listString[index];
+            currentString.setAttribute("style", "display: display");
+            index++;
+        }
+
+        if (index == listString.length) {
+            alert("You have already completed the lession ! ");
+        }
+    </script>
 </div>
