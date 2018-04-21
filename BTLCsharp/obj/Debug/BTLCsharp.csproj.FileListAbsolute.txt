@@ -92,6 +92,12 @@ F:\DotNet\BTL\BTLCsharp\BTLCsharp\obj\Debug\BTLCsharp.csproj.CoreCompileInputs.c
 F:\DotNet\BTL\BTLCsharp\BTLCsharp\obj\Debug\BTLCsharp.csproj.CopyComplete
 F:\DotNet\BTL\BTLCsharp\BTLCsharp\obj\Debug\BTLCsharp.dll
 F:\DotNet\BTL\BTLCsharp\BTLCsharp\obj\Debug\BTLCsharp.pdb
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.IO.Compression.dll
+F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\VBCSCompiler.exe
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\Views\ApplicationInsights.config
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\BTLCsharp.dll.config
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\BTLCsharp.dll
@@ -103,13 +109,9 @@ F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\csi.exe
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\csi.exe.config
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\csi.rsp
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.CSharp.Core.targets
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.VisualBasic.Core.targets
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -119,7 +121,6 @@ F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.Console.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.Diagnostics.Process.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.Diagnostics.StackTrace.dll
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.IO.Compression.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.IO.FileSystem.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -142,7 +143,6 @@ F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\System.Xml.XPath.XDocument.d
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\vbc.exe
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\vbc.exe.config
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\vbc.rsp
-F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\VBCSCompiler.exe
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\roslyn\VBCSCompiler.exe.config
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\Antlr3.Runtime.dll
 F:\DotNet\BTLCsharp\BTL_Csharp\BTLCsharp\bin\EntityFramework.dll

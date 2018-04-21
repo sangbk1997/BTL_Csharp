@@ -47,6 +47,15 @@ namespace BTLCsharp.Controllers
             contentAudio = contentAudio.ToLower();
             string[] arrayTempString = tempString.Split(new char[] { ' ' });
             List<string> listItems = TempClass.LCS.getLCS(arrayTempString, contentAudio);
+            string[] arrayStringContent = contentAudio.Split(new char[] { ' ' });
+            //if (Session["USER_SESSION"] != null)
+            //{
+            //    var dao = new UserDao();
+            //    var user = new User();
+            //    user = dao.GetById((string)(Session["USER_SESSION"]));
+            //    int score = (listItems.Count * 100 / arrayStringContent.Length) + Int32.Parse(obj.level.ToString()) * 10;
+            //    user.score += score;
+            //}
             ViewData["inputData"] = tempString;
             ViewData["contentAudio"] = contentAudio;
             ViewData["LSS"] = listItems;
@@ -77,7 +86,51 @@ namespace BTLCsharp.Controllers
         public ActionResult blankMode(int id)
         {
             db = new Model2();
-            ViewBag.audio = db.Audios.Find(id);
+            Audio audio = db.Audios.Find(id);
+            ViewBag.audio = audio;
+            string contentAudio = audio.content.ToString();
+            contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
+            ViewBag.contentAudio = contentAudio;
+            return View();
+        }
+
+        public ActionResult blankModeSubmit(int id)
+        {
+            if(Session["USER_SESSION"] != null)
+            {
+                db = new Model2();
+                var dao = new UserDao();
+                var user = new User();
+                user = dao.GetById((string)(Session["USER_SESSION"]));
+                user.score += id;
+            }
+            ViewBag.score = id;
+            return View();
+        }
+        public ActionResult quickModeSubmit(int id)
+        {
+            if (Session["USER_SESSION"] != null)
+            {
+                db = new Model2();
+                var dao = new UserDao();
+                var user = new User();
+                user = dao.GetById((string)(Session["USER_SESSION"]));
+                user.score += id;
+            }
+            ViewBag.score = id;
+            return View();
+        }
+        public ActionResult fullModeSubmit(int id)
+        {
+            if (Session["USER_SESSION"] != null)
+            {
+                db = new Model2();
+                var dao = new UserDao();
+                var user = new User();
+                user = dao.GetById((string)(Session["USER_SESSION"]));
+                user.score += id;
+            }
+            ViewBag.score = id;
             return View();
         }
         [HttpGet]

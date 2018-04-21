@@ -17,7 +17,6 @@ namespace BTLCsharp
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Wrapper", id = UrlParameter.Optional }
             );
-            
         }
     }
 }

@@ -28,52 +28,131 @@
             </audio>
         </div>
     </div>
-    <div class="contentAudio">
+    <div style="color:darkblue;">
+        Your target : Complete all the sorted blank boxes below !
+    </div>
+    <br />
+    <br />
+    <div id="contentAudio" style="width: 80%; height: auto; border-radius: 10px; border: 1px solid green; padding: 10px; margin: auto;line-height: 3;">
         @{
             string contentAudio = ViewBag.contentAudio;
             string[] arrayString = contentAudio.Split(new char[] { ' ' });
             for (int i = 0; i < arrayString.Length; i++)
             {
-                <span class="partString" style="display: none;">@arrayString[i] </span>
+                <span class="partString">@arrayString[i]</span>
             }
+            int number = (arrayString.Length / 4);
         }
     </div>
-    <div class="inputText">
-        <input type="text" value="" placeholder="Type a first letter " id="inputLetter" onkeyup="checkQuickMode();">
-    </div>
-    <div style="text-align: center;">
-        <input type="button" value="NextString" onclick="nextString();" class="btnNext">
+    <div style="text-align: center; font-size: 14px; margin: 20px;">
+        <span>You can use the button : "Next Blank" to ignore the current blank </span>
+        <button style="padding: 10px 15px; border: 1px solid orange; border-radius: 7px; color: darkblue; font-size:15px;" onclick="nextBlank();">Next Blank</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div style="color: orange;">
+            <div class="col-1">Your score</div>
+            <div class="col-2">Min: 0</div>
+            <div class="col-6" style="background-color:gray; border-radius: 5px;">
+                <div style=" background-color:orange; border-radius: 5px; color: white; padding: 5px; text-align:right; width: 0%;" id="score"></div>
+            </div>
+            <div class="col-2">Max: <span id="maxScore"></span></div>
+        </div>
+        <div style="clear: both;">
+            <br />
+            <br />
+
+
+            <a id="submitLink" href="/Audio/blankModeSubmit/0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
+        </div>
     </div>
     <script>
+                var parent = document.getElementById("contentAudio");
+                var listString = document.getElementsByClassName("partString");
+                var lengthSubString = listString.length;
+                var selectTag = document.getElementById("numberBlank");
+                var arrayList = [];
+                var arrayListString = [];
+                var tagInserted = [];
+        var tempString = "";
+        var maxScoreTag = document.getElementById("maxScore");
+        var maxScrore;
         var index = 0;
-        function checkQuickMode() {
-            alert("Hello");
-            var input = document.getElementById("inputLetter");
-            var listString = document.getElementsByClassName("partString");
-            var currentString = listString[index];
-            var temp1 = input.value.toLowerCase();
+        var marked = 0;
+        function nextBlank() {
+            var child = listString[arrayList[index]];
+            child.setAttribute("style", "display: display; color: red; font-weight: bold;");
+            parent.removeChild(tagInserted[index]);
+            index++;
+            tempString = "";
+            tagInserted[index].readOnly = false;
+            tagInserted[index].focus();
+        }
+                function checkInput() {
+                    tagInserted[index].focus();
+                    var input = tagInserted[index];
+                    var currentString = arrayListString[index];
+                    var temp1 = input.value.toLowerCase();
+                    var temp2 = currentString.toLowerCase();
+                    if (temp2.indexOf(temp1) == 0) {
+                        input.value = input.value;
+                        tempString = input.value;
+                    }
+                    else {
+                        input.value = tempString;
+                    }
 
-            var temp2 = currentString.innerHTML.toLowerCase();
-            alert(temp1);
-            alert(temp2);
-            if (temp2.indexOf(temp1) == 0) {
-                alert("Right");
-                currentString.setAttribute("style", "display: display");
-                index++;
-                input.value = "";
+                    if (temp1.length == temp2.length) {
+
+                        var child = listString[arrayList[index]];
+                        child.setAttribute("style", "display: display; color: blue; font-weight: bold;");
+                        parent.removeChild(tagInserted[index]);
+                        index++;
+                        marked++;
+                        var score = document.getElementById("score");
+                        var submitLink = document.getElementById("submitLink");
+                        score.innerHTML = Math.floor((marked / arrayList.length) * maxScrore);
+                        var width = Math.floor(marked / arrayList.length * 100);
+                        var style = " background-color:green; border-radius: 5px; color: white; padding: 5px; text-align:right; width:" + width + "%;";
+                        score.setAttribute("style", style);
+                        var href = "/Audio/blankModeSubmit/" + Math.floor((marked / arrayList.length) * maxScrore);
+                        submitLink.setAttribute("href", href);
+                        tempString = "";
+                        tagInserted[index].readOnly = false;
+                        tagInserted[index].focus();
+
+                    }
+                }
+        function firstSetup() {
+            var value = prompt("Please select the number form 3 to @number ", "");
+            if (value == null) {
+                window.location.href = "/Home/Index";
             }
             else {
-                alert("Wrong !");
-                input.value = "";
+                 while (value > @number || value < 3) {
+                value = prompt("Please select the number form 3 to @number ", "");
+            }
+            var number = @number;
+            maxScrore = (@audio.level * 10 + 100) + Math.floor((value / number) * 100);
+            maxScore.innerHTML = maxScrore;
+            for (var i = 0; i < value; i++) {
+                tagInserted[i] = document.createElement("input");
+                tagInserted[i].setAttribute("type", "text");
+                tagInserted[i].setAttribute("style", "width: 80px; border: 1px solid red; border-radius: 5px; padding: 5px; ");
+                arrayList[i] = Math.floor((Math.random() * 4 + 1)) + (i * 4);
+                var child = listString[arrayList[i]];
+                parent.insertBefore(tagInserted[i], child);
+                arrayListString[i] = child.innerHTML;
+                child.setAttribute("style", "display: none");
+                tagInserted[i].addEventListener("keyup", checkInput);
+                tagInserted[i].readOnly = true;
+            }
+            tagInserted[0].readOnly = false;
             }
         }
 
-        function nextString() {
-            var listString = document.getElementsByClassName("partString");
-            var currentString = listString[index];
-            currentString.setAttribute("style", "display: display");
-            index++;
-        }
+                window.onload = firstSetup();
     </script>
 </div>
 

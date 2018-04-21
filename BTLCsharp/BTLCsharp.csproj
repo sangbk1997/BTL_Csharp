@@ -279,6 +279,9 @@
     <Content Include="Views\Audio\fullMode.cshtml" />
     <Content Include="Views\Audio\quickMode.cshtml" />
     <Content Include="Views\Audio\blankMode.cshtml" />
+    <Content Include="Views\Audio\blankModeSubmit.cshtml" />
+    <Content Include="Views\Audio\quickModeSubmit.cshtml" />
+    <Content Include="Views\Audio\fullModeSubmit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

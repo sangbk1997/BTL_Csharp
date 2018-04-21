@@ -41,15 +41,46 @@
     <div class="inputText">
         <input type="text" id="inputData" value="" placeholder="Type a word here " onkeyup="checkFullMode();" />
     </div>
+    <br /><br />
     <div style="text-align: center;">
         <input type="button" value="Suggest" onclick="suggestLetter();" class="btnNext">
         <span id="suggestedLetters" style="color: purple; font-weight:bold"></span>
-        <input type="button" value="NextString" onclick="nextString();" class="btnNext">
+        <input type="button" value="NextString" onclick="nextString();" class="btnNext" style="background-color: gray; color: white;">
+        <br />
+        <div style="color: black; font-size: 14px;">
+            <div>
+                You can use "Suggest" button to show one letter of a word ... !
+            </div>
+            <div>
+                You can use "NextString" button to ignore current word ... !
+            </div>
+        </div>
+        <br />
+        <br />
+        <div style="color: orange;">
+            <div class="col-1">Your score</div>
+            <div class="col-2">Min: 0</div>
+            <div class="col-6" style="background-color:gray; border-radius: 5px;">
+                <div style=" background-color:orange; border-radius: 5px; color: white; padding: 5px; text-align:right; width: 0%;" id="score"></div>
+            </div>
+            <div class="col-2">Max: <span id="maxScore"></span></div>
+        </div>
+        <div style="clear: both;">
+            <br />
+            <br />
+
+
+            <a id="submitLink" href="/Audio/fullModeSubmit/0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
+        </div>
     </div>
     <script>
         var index = 0;
         var tempString = "";
         var listString = document.getElementsByClassName("partString");
+        var maxScoreTag = document.getElementById("maxScore");
+        var maxScrore = (@audio.level * 10 + 100) + listString.length * 2;
+        maxScoreTag.innerHTML = maxScrore;
+        var marked = 0;
         function checkFullMode() {
             var input = document.getElementById("inputData");
             var currentString = listString[index];
@@ -68,11 +99,23 @@
                 input.value = "";
                 tempString = "";
                 index++;
+                marked++;
+                var score = document.getElementById("score");
+                var submitLink = document.getElementById("submitLink");
+                score.innerHTML = Math.floor((marked / listString.length) * maxScrore);
+                var width = Math.floor(marked / listString.length * 100);
+                var style = " background-color:green; border-radius: 5px; color: white; padding: 5px; text-align:right; width:" + width + "%;";
+                score.setAttribute("style", style);
+                var href = "/Audio/fullModeSubmit/" + Math.floor((marked / listString.length) * maxScrore);
+                submitLink.setAttribute("href", href);
             }
         }
         function suggestLetter() {
             var suggestedLetter = document.getElementById("suggestedLetters");
             var letter = listString[index].innerHTML.substr(tempString.length, 1);
+            if (tempString.length > listString[index].length / 2) {
+                marked--;
+            }
             suggestedLetter.innerHTML = letter;
 
         }
