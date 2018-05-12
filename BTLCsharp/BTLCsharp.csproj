@@ -156,17 +156,18 @@
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="EF\Audio.cs" />
     <Compile Include="EF\Category.cs" />
+    <Compile Include="EF\HistoricalScore.cs" />
     <Compile Include="EF\Model2.cs" />
     <Compile Include="EF\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CategoryModal.cs" />
-    <Compile Include="Models\FormInputAudio.cs" />
-    <Compile Include="Models\inputDataModal.cs" />
-    <Compile Include="Models\ListItemsModal.cs" />
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\SignUpModel.cs" />
+    <Compile Include="fonts\Models\CategoryModal.cs" />
+    <Compile Include="fonts\Models\FormInputAudio.cs" />
+    <Compile Include="fonts\Models\inputDataModal.cs" />
+    <Compile Include="fonts\Models\ListItemsModal.cs" />
+    <Compile Include="fonts\Models\LoginModel.cs" />
+    <Compile Include="fonts\Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -230,7 +231,7 @@
     <Content Include="Content\image\zingme.png" />
     <Content Include="Content\myFunction.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\styleChart.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -279,9 +280,16 @@
     <Content Include="Views\Audio\fullMode.cshtml" />
     <Content Include="Views\Audio\quickMode.cshtml" />
     <Content Include="Views\Audio\blankMode.cshtml" />
-    <Content Include="Views\Audio\blankModeSubmit.cshtml" />
-    <Content Include="Views\Audio\quickModeSubmit.cshtml" />
-    <Content Include="Views\Audio\fullModeSubmit.cshtml" />
+    <Content Include="Views\Shared\_Category.cshtml" />
+    <Content Include="Views\Shared\_Levels.cshtml" />
+    <Content Include="Views\Audio\AudioByLevel.cshtml" />
+    <Content Include="Views\Audio\AudioByCategory.cshtml" />
+    <Content Include="Views\User\viewCMScore.cshtml" />
+    <Content Include="Views\User\viewBMScore.cshtml" />
+    <Content Include="Views\User\viewQMScore.cshtml" />
+    <Content Include="Views\User\viewFMScore.cshtml" />
+    <Content Include="Views\Audio\addScore.cshtml" />
+    <Content Include="Views\User\viewScore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

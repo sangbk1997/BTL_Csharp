@@ -24,10 +24,13 @@
     </div>
     <div style="width: 80%; margin: 50px auto; text-align: center;">
         <h3>Play Audio</h3>
+        <br />
+        <span id="btnPlay" onclick="playAudio();"><img src="~/Content/image/playAudio.jpg" style="width: 100px; height:auto;" alt="Play Button" /></span>
         <div>
-            <audio controls="controls" style="width: 80%; margin: auto;">
+            <audio id="audio" controls="controls" style="width: 100%; margin: auto; display:none;">
                 <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
             </audio>
+
         </div>
     </div>
     <div class="inputText">
@@ -58,14 +61,14 @@
                     @ViewData["inputData"]
                 </div>
             </div>
-            <div>
+            @*<div>
                 <hr />
                 <h2 style="font-size: 20px; color: blue;">Content</h2>
                 <div>
                     @ViewData["contentAudio"]
                 </div>
-            </div>
-            <div>
+            </div>*@
+            @*<div>
                 <hr />
                 <h2 style="font-size: 20px; color: blue;">Longest Common Sequence</h2>
                 <div>
@@ -84,7 +87,7 @@
                         }
                     }
                 </div>
-            </div>
+            </div>*@
             <div>
                 <hr />
                 <h2 style="font-size: 20px; color: blue;">Result</h2>
@@ -133,13 +136,13 @@
                                         }
                                         <span style="color: green">@arrayString[j] </span>
                                         indexed = j + 1;
-                                        continue;
+                                        break;
                                     }
                                 }
                             }
-                            for(int i=indexed; i < arrayString.Length; i++)
+                            for (int i = indexed; i < arrayString.Length; i++)
                             {
-                                        <span style="color: red; text-decoration: line-through">@arrayString[i] </span>
+                                <span style="color: red; text-decoration: line-through">@arrayString[i] </span>
                             }
 
                         }
@@ -148,7 +151,21 @@
                 </div>
                 <br />
             </div>
+            <div>
+                <h2>Your Score: @ViewBag.score</h2>
+            </div>
 
         </div>
     </div>
 </div>
+
+<script>
+    var btnPlay = document.getElementById("btnPlay");
+    var audio = document.getElementById("audio");
+    function playAudio() {
+        btnPlay.setAttribute("style", "display: none");
+        audio.setAttribute("style", "display: display");
+        audio.paused ? audio.play() : audio.pause();
+
+    }
+</script>

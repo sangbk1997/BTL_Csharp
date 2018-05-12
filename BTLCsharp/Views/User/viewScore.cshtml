@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "viewBMScore";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div style="width: 80%; float:left; border-top: 2px solid blue; background-color: #ffffff; border-radius: 10px;">
+    <div class="titleGraph">
+        The graph indicate your historical Score
+    </div>
+    @{
+        var objScores = ViewBag.obj;
+        var listScores = ViewBag.listScores;
+        if (listScores != null)
+        {
+            <ul>
+                <li>
+                    <div style="color:blue; margin-left: 30px;">
+                        Player : <b style="color: blue">@ViewBag.player</b>
+                    </div>
+                </li>
+                <li>
+                    <div style="color:blue; margin-left: 30px;">
+                        Your historical score !
+                    </div>
+                </li>
+                <li>
+                    <div style="color: orange;; margin-left: 30px;">
+                        <span style="color: red;">Note : </span>
+                        High speed is high value
+                    </div>
+                </li>
+                <li>
+                    <div style="color:black; margin-left: 30px;">
+                        View score in other level 1 | 2
+                    </div>
+                </li>
+            </ul>
+
+
+            <div class="chart">
+                <div class="extraInfoGraph">
+                    < slow  fast >
+                </div>
+                <div class="horizontalLine">
+
+                    <div class="row"><span class="sign"></span><span>400</span></div>
+                    <div class="row"><span class="sign"></span><span>380</span></div>
+                    <div class="row"><span class="sign"></span><span>360</span></div>
+                    <div class="row"><span class="sign"></span><span>340</span></div>
+                    <div class="row"><span class="sign"></span><span>320</span></div>
+                    <div class="row"><span class="sign"></span><span>300</span></div>
+                    <div class="row"><span class="sign"></span><span>280</span></div>
+                    <div class="row"><span class="sign"></span><span>260</span></div>
+                    <div class="row"><span class="sign"></span><span>240</span></div>
+                    <div class="row"><span class="sign"></span><span>220</span></div>
+                    <div class="row"><span class="sign"></span><span>200</span></div>
+                    <div class="row"><span class="sign"></span><span>180</span></div>
+                    <div class="row"><span class="sign"></span><span>160</span></div>
+                    <div class="row"><span class="sign"></span><span>140</span></div>
+                    <div class="row"><span class="sign"></span><span>120</span></div>
+                    <div class="row"><span class="sign"></span><span>100</span></div>
+                    <div class="row"><span class="sign"></span><span>80</span></div>
+                    <div class="row"><span class="sign"></span><span>60</span></div>
+                    <div class="row"><span class="sign"></span><span>40</span></div>
+                    <div class="row"><span class="sign"></span><span>20</span></div>
+                    <div class="row"><span class="sign"></span><span>0</span></div>
+
+                </div>
+                <div class="verticalLine">
+                    @{
+                        foreach (var obj in objScores)
+                        {
+                            String high = (obj.score-5)  + "px";
+                            <div class="col"><span class="tick"></span><span class="date">@obj.dayLearned</span><span class="point" style="height: @high; "><span class="tooltipText">@obj.score</span></span></div>
+                        }
+                    }
+
+                </div>
+            </div>
+
+            <div style="margin: 600px auto 100px auto; text-align: center; width: 50%;">
+                <h3>The table show your process </h3>
+                <div style="clear: both">
+                    <span style="float: left; width: 50%; text-align: center; color: palevioletred;border: 1px solid gray;">
+                        <h3>DateTime</h3>
+                    </span>
+                    <span style="float: left; width: 50%; text-align: center; color: palevioletred;border: 1px solid gray;">
+                        <h3>Score</h3>
+                    </span>
+                </div>
+                @{
+                    foreach (var obj in listScores)
+                    {
+                        <div style="clear: both;">
+                            <span style="float: left; width: 50%; text-align: center; border: 1px solid gray;padding: 10px;">
+                                @obj.dayLearned
+                            </span>
+                            <span style="float: left; width: 50%; text-align: center; border: 1px solid gray;padding: 10px;">
+                                @obj.score
+                            </span>
+                        </div>
+                    }
+                }
+            </div>
+
+        }
+        else
+        {
+            <h2 style="text-align: center; color: red; font-weight: bold">Please learn more too see your historical Scores</h2>
+        }
+    }
+</div>
+

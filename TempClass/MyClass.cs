@@ -140,19 +140,15 @@ namespace TempClass
               string content = "Bob picks up the ball. He throws the ball. Bill catches the ball. Bill throws the ball back. Bob catches the ball. Bob throws the ball to Bill. Bill drops the ball. Bill picks it up. He throws it over Bob's head. Bob runs back. He jumps up. He catches the ball";
             content = functionClass.removeOddLetter(content);
             content = content.ToLower();
-              string input= "Bob picks up the ball. He throws the ball. Bill catches the ball. Bill throws the ball back. Bob catches the ball. Bob throws the ball to Bill. Bill drops the ball. Bill picks it up. He throws it over Bob's head. Bob runs back. He jumps up. He catches the ball";
-            Console.WriteLine("Input :");
-            Console.WriteLine(input);
+            string input = "Bob picks up Hello minh  back. Bob catches sangbk the ball.";
             input = functionClass.removeOddLetter(input);
             input = input.ToLower();
-            string[] arrayString = input.Split(new char[] { ' ' });
-            List<string> result = LCS.getLCS(arrayString, content);
             Console.WriteLine("Content : ");
             Console.WriteLine(content);
-            content = functionClass.standardziedString(content);
-            Console.WriteLine("Content 2 : ");
-            input = functionClass.removeSpace(input);
-            Console.WriteLine(content);
+            Console.WriteLine("Input");
+            Console.WriteLine(input);
+            string[] arrayString = input.Split(new char[] { ' ' });
+            List<string> result = LCS.getLCS(arrayString, content);
             Console.WriteLine("Result : ");
             for (int i = result.Count-1; i>=0 ; i--)
             {

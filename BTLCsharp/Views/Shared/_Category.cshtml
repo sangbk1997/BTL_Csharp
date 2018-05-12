@@ -1,0 +1,31 @@
+﻿
+<div class="Category">
+    <hr>
+    <br />
+    <br>
+    <span class="btnTitle">Category</span>
+    <br>
+    <br>
+    <br>
+
+    @{
+        var db = new BTLCsharp.EF.Model2();
+        var listCategories = db.Categories.ToList();
+        foreach (var obj in listCategories)
+        {
+            string url = "~/Content/image/corporateDevelopment.jpg";
+
+            <div class="categoryContent col-5">
+                <div class="img col-4">
+                    <img src="@Url.Content(obj.urlImg)" alt=@obj.urlImg>
+                </div>
+                <div class="imgInfo col-8">
+                    <div class="categoryName">
+                        @obj.nameCategory
+                    </div>
+                    <div class="description">Brief Description : <span style="color: black">@obj.briefIntroduce</span> </div>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -40,7 +40,6 @@ namespace BTLCsharp.Controllers
                     user.joinDate = DateTime.Now;
                     user.age = obj.age;
                     user.modeAccess = 0;
-                    user.score = 0;
                     var result = dao.Insert(user);
                     string alert = "Nickname : " + user.meta_username.ToString();
                     if(result > 0)
@@ -103,5 +102,28 @@ namespace BTLCsharp.Controllers
            
         }
 
+      public ActionResult viewScore()
+        {
+            if(Session["USER_SESSION"] != null)
+            {
+                var db = new Model2();
+                var dao = new UserDao();
+                var user = new User();
+                user = dao.GetById((string)(Session["USER_SESSION"]));
+                var listHis = db.HistoricalScores.Where(s => s.idUser == user.id);
+                var showedScores = listHis.OrderBy(s => s.seqDay).ToList().Take(10);
+                var showedListScores = listHis.OrderBy(s => s.seqDay).ToList();
+                ViewBag.obj = showedScores;
+                ViewBag.listScores = showedListScores;
+                ViewBag.player = Session["USER_SESSION"];
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
+        }
     }
 }

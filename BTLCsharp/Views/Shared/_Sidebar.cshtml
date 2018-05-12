@@ -14,7 +14,7 @@
         @Html.ActionLink("Add Category", "AddCategory", "Audio")
         <br /><br />
         @Html.ActionLink("Submit new Audio !", "SubmitAudio", "Audio")
-              
+
     </div>
     <br>
     <div>
@@ -22,91 +22,30 @@
     </div>
     <br>
     <div>
-        <a href="#">Your Score</a>
-
+        @Html.ActionLink("View YourScore", "viewScore", "User")
+        <br />
+        <br />
     </div>
     <br>
     <br>
     <div>
         <h3 style="color: blue;">Top Active Learner</h3>
         <hr>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <div>
-            <span>Sangbk</span>
-            <span>1024</span>
-        </div>
-        <br>
+        <br />
+
+        @{
+            var db = new BTLCsharp.EF.Model2();
+            var topUser = db.Users.OrderByDescending(u => u.totalScores).ToList().Take(10);
+            foreach (var u in topUser)
+            {
+                <div style="margin-bottom: 20px;  clear:both;">
+                    <div style="width: 50%; text-align: center; float: left"><span>@u.meta_username</span></div>
+                    <div style="width: 50%; text-align: center; float: left"><span>@u.totalScores</span></div>
+                </div>
+            }
+        }
+
+        <br />
         <hr>
     </div>
 

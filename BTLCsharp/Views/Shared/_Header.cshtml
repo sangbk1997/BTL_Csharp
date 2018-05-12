@@ -8,16 +8,17 @@
         </div>
         <div class="login-signup col-7">
             <div class="btnSignUp-btnLogin">
-                
-                @if(Session["USER_SESSION"] != null)
+
+                @if (Session["USER_SESSION"] != null)
                 {
-                     <span class="btnSignUp2">@Html.ActionLink("LogOut", "LogOut", "User")</span>
-                     <span style="background-color:#eb902d; padding: 10px 15px ; color : purple; border-radius: 10px;"> <span style="color: white; font-size: 18px;">User:</span> @Session["USER_SESSION"]</span>
+                    <span class="btnSignUp2">@Html.ActionLink("LogOut", "LogOut", "User")</span>
+                    <span style="background-color:#eb902d; padding: 10px 15px ; color : purple; border-radius: 10px;"> <span style="color: white; font-size: 18px;">User:</span> @Session["USER_SESSION"]</span>
 
                 }
-                else {
-                     <span class="btnSignUp2">@Html.ActionLink("SignUp", "SignUp", "User")</span>
-                     <span class="btnLogin2">@Html.ActionLink("Login", "Login", "User")</span>
+                else
+                {
+                    <span class="btnSignUp2">@Html.ActionLink("SignUp", "SignUp", "User")</span>
+                    <span class="btnLogin2">@Html.ActionLink("Login", "Login", "User")</span>
                 }
 
             </div>
@@ -46,21 +47,47 @@
         </div>
     </div>
     <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
-        <a href="#new">News</a>
-        <a href="#contact">Contact</a>
+        <a href="/Home/Index" class="active">Home</a>
         <div class="dropdown">
             <button class="dropbtn">
-                Dropdown
-                <i></i>
+                Category
             </button>
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                @{
+                    var db = new BTLCsharp.EF.Model2();
+                    var listCategories = db.Categories.ToList();
+                    for (int i = 0; i < listCategories.Count; i++)
+                    {
+
+                        <a href="@Url.Action("AudioByCategory","Audio", new {category =listCategories[i].meta_Category.Replace(' ','-')  })" style="width: 25%; padding: 5px; margin: 0px; float: left;">@listCategories[i].nameCategory.ToString()</a>
+                    }
+
+
+                }
 
             </div>
         </div>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Level
+            </button>
+            <div class="dropdown-content">
+                @{
+                    var listLevel = db.Audios.Select(s => s.level);
+                    var levels = listLevel.Distinct().ToArray();
+                    for (int i = 0; i < levels.Count(); i++)
+                    {
+                        if (i % 4 == 0)
+                        {
+                            <br />
+                        }
+                        <a href="@Url.Action("AudioByLevel","Audio", new { level = levels[i]})">@levels[i].ToString()</a>
+                    }
+
+                }
+            </div>
+        </div>
+        <a href="#about">Contact</a>
         <a href="#about">About</a>
         <a href="javascript:void(0);" class="icon" onclick="showNav();">&#9776</a>
 

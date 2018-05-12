@@ -22,10 +22,16 @@
     </div>
     <div style="width: 80%; margin: 50px auto; text-align: center;">
         <h3>Play Audio</h3>
+        <br />
+        <span id="btnPlay" onclick="playAudio();"><img src="~/Content/image/playAudio.jpg" style="width: 100px; height:auto;" alt="Play Button" /></span>
         <div>
-            <audio controls="controls" style="width: 80%; margin: auto;">
+            <audio id="audio" controls="controls" style="width: 100%; margin: auto; display:none;">
                 <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
             </audio>
+
+        </div>
+        <div>
+            <p id="startTime"></p>
         </div>
     </div>
     <div class="contentAudio">
@@ -70,7 +76,7 @@
             <br />
 
 
-            <a id="submitLink" href="/Audio/fullModeSubmit/0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
+            <a id="submitLink" href="/Audio/addScore/?score=0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
         </div>
     </div>
     <script>
@@ -78,9 +84,18 @@
         var tempString = "";
         var listString = document.getElementsByClassName("partString");
         var maxScoreTag = document.getElementById("maxScore");
-        var maxScrore = (@audio.level * 10 + 100) + listString.length * 2;
+
+        // Cong thuc tinh diem trong che do fullMode
+        var maxScrore = @audio.level * listString.length;
         maxScoreTag.innerHTML = maxScrore;
         var marked = 0;
+        var btnPlay = document.getElementById("btnPlay");
+        var audio = document.getElementById("audio");
+        function playAudio() {
+            btnPlay.setAttribute("style", "display: none");
+            audio.setAttribute("style", "display: display");
+            audio.paused ? audio.play() : audio.pause();
+        }
         function checkFullMode() {
             var input = document.getElementById("inputData");
             var currentString = listString[index];
@@ -106,7 +121,7 @@
                 var width = Math.floor(marked / listString.length * 100);
                 var style = " background-color:green; border-radius: 5px; color: white; padding: 5px; text-align:right; width:" + width + "%;";
                 score.setAttribute("style", style);
-                var href = "/Audio/fullModeSubmit/" + Math.floor((marked / listString.length) * maxScrore);
+                var href = "/Audio/addScore/?score=" + Math.floor((marked / listString.length) * maxScrore);
                 submitLink.setAttribute("href", href);
             }
         }

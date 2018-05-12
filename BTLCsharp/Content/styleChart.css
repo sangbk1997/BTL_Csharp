@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+.titleGraph {
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+    font-size: 30px;
+    color: forestgreen;
+    text-shadow: 2px 3px 1px orange;
+}
+
+.chart {
+    position: relative;
+    margin: auto;
+    font-size: 15px;
+}
+
+.horizontalLine {
+    position: absolute;
+    background-color: rgb(211, 221, 155);
+    width: 80%;
+    top: 30px;
+    left: 10%;
+}
+
+.verticalLine {
+    position: absolute;
+    width: 80%;
+    top: 30px;
+    left: 10%;
+}
+
+.col {
+    position: relative;
+    width: 10%;
+    float: left;
+    border-right: #123 1px dotted;
+    height: 420px;
+    margin: 0px;
+    padding: 0px;
+}
+
+    .col:first-child {
+        border-left: 2px solid purple;
+    }
+
+    .col span {
+        position: absolute;
+        bottom: -50px;
+        right: -30px;
+    }
+
+    .col .tick {
+        position: absolute;
+        padding: 5px 2px;
+        background-color: black;
+        bottom: -10px;
+        right: -2px;
+    }
+
+    .col .point {
+        position: absolute;
+        padding: 5px;
+        background-color: blue;
+        right: -15px;
+        border: 1px solid navy;
+    }
+
+.tooltipText {
+    visibility: hidden;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: rgb(237, 238, 174);
+    color: darkred;
+    box-shadow: 0px 2px 5px 2px #892;
+    border-radius: 10px;
+}
+
+.point:hover .tooltipText {
+    visibility: visible;
+}
+
+.row {
+    position: relative;
+    border-bottom: 1px dotted orange;
+    height: 20px;
+}
+
+    .row:last-child {
+        border-bottom: 2px solid purple;
+    }
+
+    .row span {
+        position: absolute;
+        left: -50px;
+        bottom: -10px;
+    }
+
+    .row .sign {
+        position: absolute;
+        padding: 2px 5px;
+        background-color: black;
+        bottom: -3px;
+        left: -10px;
+    }
+
+.extraInfoGraph {
+    color: brown;
+    font-size: 20px;
+    position: absolute;
+    left: -20px;
+    top: 250px;
+    transform: rotate(270deg);
+}

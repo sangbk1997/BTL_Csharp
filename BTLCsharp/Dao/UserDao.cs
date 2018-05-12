@@ -19,6 +19,19 @@ namespace BTLCsharp.Dao
             db.SaveChanges();
             return entity.id;
         }
+        public bool addHistoricalScore(HistoricalScore entity)
+        {
+            try
+            {
+                db.HistoricalScores.Add(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public bool submitAudio(Audio entity)
         {
             try
@@ -67,6 +80,8 @@ namespace BTLCsharp.Dao
             }
         }
 
+
+
         public bool UpdateCategory(Category entity)
         {
             try
@@ -99,6 +114,7 @@ namespace BTLCsharp.Dao
                 return false;
             }
         }
+
 
         public User GetById(string userName)
         {

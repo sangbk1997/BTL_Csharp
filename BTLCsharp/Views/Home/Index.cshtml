@@ -17,13 +17,14 @@
         <br>
         <br>
         @{
-            var db = new BTLCsharp.EF.Model2();
-            var audios = db.Audios.Take(20).ToList();
-            foreach (var audio in audios)
-            {
+                var db = new BTLCsharp.EF.Model2();
+                var audios = db.Audios.OrderByDescending(s => s.views).ToList();
+                var showedAudio = audios.Take(20);
+                foreach (var audio in showedAudio)
+                {
                 <div class="audio col-6">
                     <div class="audioName">
-                        <a href="@Url.Action("ListeningModes","Audio", new {id = audio.idAudio, name = audio.meta_AudioName.Replace(" ","-") })">@audio.audioName</a>
+                        <a href="@Url.Action("ListeningModes","Audio", new {id = audio.idAudio})">@audio.audioName</a>
                     </div>
                     <div class="extraInfo" style="font-size: 15px;">( Author: @db.Users.Find(audio.idUser).meta_username | Level : @audio.level | Category : @audio.Category )</div>
                 </div>
@@ -50,17 +51,19 @@
             {
                 string url = "~/Content/image/corporateDevelopment.jpg";
 
-                <div class="categoryContent col-5">
-                    <div class="img col-4">
-                        <img src="@Url.Content(obj.urlImg)" alt=@obj.urlImg>
-                    </div>
-                    <div class="imgInfo col-8">
-                        <div class="categoryName">
-                            @obj.nameCategory
+                <a href="@Url.Action("AudioByCategory","Audio", new { category = obj.meta_Category.Replace(' ','-') })">
+                    <div class="categoryContent col-5">
+                        <div class="img col-4">
+                            <img src="@Url.Content(obj.urlImg)" alt=@obj.urlImg>
                         </div>
-                        <div class="description">Brief Description : <span style="color: black">@obj.briefIntroduce</span> </div>
+                        <div class="imgInfo col-8">
+                            <div class="categoryName">
+                                @obj.nameCategory
+                            </div>
+                            <div class="description">Brief Description : <span style="color: black">@obj.briefIntroduce</span> </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             }
         }
     </div>

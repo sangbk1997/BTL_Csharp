@@ -22,10 +22,13 @@
     </div>
     <div style="width: 80%; margin: 50px auto; text-align: center;">
         <h3>Play Audio</h3>
+        <br />
+        <span id="btnPlay" onclick="playAudio();"><img src="~/Content/image/playAudio.jpg" style="width: 100px; height:auto;" alt="Play Button" /></span>
         <div>
-            <audio controls="controls" style="width: 80%; margin: auto;">
+            <audio id="audio" controls="controls" style="width: 100%; margin: auto; display:none;">
                 <source src="@Url.Content(audio.urlAudio)" type="audio/mp3" />
             </audio>
+
         </div>
     </div>
     <div style="color:darkblue;">
@@ -64,22 +67,28 @@
             <br />
 
 
-            <a id="submitLink" href="/Audio/blankModeSubmit/0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
+            <a id="submitLink" href="/Audio/addScore/?score=0"><button class="btnSubmit" style="width: 20%; background-color: #2d4de9">Submit</button></a>
         </div>
     </div>
     <script>
-                var parent = document.getElementById("contentAudio");
-                var listString = document.getElementsByClassName("partString");
-                var lengthSubString = listString.length;
-                var selectTag = document.getElementById("numberBlank");
-                var arrayList = [];
-                var arrayListString = [];
-                var tagInserted = [];
+        var parent = document.getElementById("contentAudio");
+        var listString = document.getElementsByClassName("partString");
+        var lengthSubString = listString.length;
+        var selectTag = document.getElementById("numberBlank");
+        var arrayList = [], arrayListString = [], tagInserted = [];
         var tempString = "";
         var maxScoreTag = document.getElementById("maxScore");
         var maxScrore;
         var index = 0;
         var marked = 0;
+        var btnPlay = document.getElementById("btnPlay");
+        var audio = document.getElementById("audio");
+        function playAudio() {
+            btnPlay.setAttribute("style", "display: none");
+            audio.setAttribute("style", "display: display");
+            audio.paused ? audio.play() : audio.pause();
+
+        }
         function nextBlank() {
             var child = listString[arrayList[index]];
             child.setAttribute("style", "display: display; color: red; font-weight: bold;");
@@ -116,7 +125,7 @@
                         var width = Math.floor(marked / arrayList.length * 100);
                         var style = " background-color:green; border-radius: 5px; color: white; padding: 5px; text-align:right; width:" + width + "%;";
                         score.setAttribute("style", style);
-                        var href = "/Audio/blankModeSubmit/" + Math.floor((marked / arrayList.length) * maxScrore);
+                        var href = "/Audio/addScore/?score=" + Math.floor((marked / arrayList.length) * maxScrore);
                         submitLink.setAttribute("href", href);
                         tempString = "";
                         tagInserted[index].readOnly = false;
@@ -125,7 +134,7 @@
                     }
                 }
         function firstSetup() {
-            var value = prompt("Please select the number form 3 to @number ", "");
+            var value = prompt("Please select the number from 3 to @number blank boxes" , "");
             if (value == null) {
                 window.location.href = "/Home/Index";
             }
@@ -133,8 +142,10 @@
                  while (value > @number || value < 3) {
                 value = prompt("Please select the number form 3 to @number ", "");
             }
-            var number = @number;
-            maxScrore = (@audio.level * 10 + 100) + Math.floor((value / number) * 100);
+                var number = @number;
+
+                // Cong thuc tinh diem cho che do blankMode
+            maxScrore = @audio.level *Math.floor((value / number) * 100);
             maxScore.innerHTML = maxScrore;
             for (var i = 0; i < value; i++) {
                 tagInserted[i] = document.createElement("input");

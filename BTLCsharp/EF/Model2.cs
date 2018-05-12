@@ -8,12 +8,13 @@ namespace BTLCsharp.EF
     public partial class Model2 : DbContext
     {
         public Model2()
-            : base("name=Model2")
+            : base("name=Model16")
         {
         }
 
         public virtual DbSet<Audio> Audios { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<HistoricalScore> HistoricalScores { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -27,6 +28,12 @@ namespace BTLCsharp.EF
                 .HasMany(e => e.Categories)
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.idUser);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.HistoricalScores)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.idUser)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "AudioByCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contentDetail">
+    <br />
+    <div style="text-align:center">
+        <span style="text-align:center; padding: 10px 15px; color: purple; font-size: 25px;">Audio By Category</span>
+    </div>
+    <br />
+    @{
+        if (ViewBag.audios == null)
+        {
+            <h3>No audios match with this Category</h3>
+        }
+        else
+        {
+            var db = new BTLCsharp.EF.Model2();
+            var audios = ViewBag.audios;
+            foreach (var audio in audios)
+            {
+                <div class="audio col-6">
+                    <div class="audioName">
+                        <a href="@Url.Action("ListeningModes","Audio", new {id = audio.idAudio, name = audio.meta_AudioName.Replace(" ","-") })">@audio.audioName</a>
+                    </div>
+                    <div class="extraInfo" style="font-size: 15px;">( Author: @db.Users.Find(audio.idUser).meta_username | Level : @audio.level | Category : @audio.Category )</div>
+                </div>
+            }
+        }
+    }
+</div>
