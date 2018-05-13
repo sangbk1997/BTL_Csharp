@@ -70,7 +70,7 @@
         var listString = document.getElementsByClassName("partString");
         var maxScoreTag = document.getElementById("maxScore");
         // Cong thuc tinh diem trong che do quickMode 
-        var maxScrore = @audio.level *listString.length;
+        var maxScrore = (@audio.level+1) *listString.length;
         maxScoreTag.innerHTML = maxScrore;
         var marked = 0;
         var btnPlay = document.getElementById("btnPlay");

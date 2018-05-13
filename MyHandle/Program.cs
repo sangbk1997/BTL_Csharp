@@ -86,19 +86,19 @@ namespace MyHandle
 
     class Program
     {
-        static void Main(string[] args)
-        {
-            string str = "Xin chào bạn      mình là Sang  ! \\ -    hiện đang là sinh viên BK    ";
-            //str = FormatString.filterSeal(str);
-            str = FormatString.removeOddLetter(str);
-            Console.WriteLine(str);
-            string[] temp = FormatString.splitString(str);
-            foreach (var i in temp)
-            {
-                Console.WriteLine(i);
-            }
-            Console.Read();
-        }
+        //static void Main(string[] args)
+        //{
+        //    string str = "Xin chào bạn      mình là Sang  ! \\ -    hiện đang là sinh viên BK    ";
+        //    //str = FormatString.filterSeal(str);
+        //    str = FormatString.removeOddLetter(str);
+        //    Console.WriteLine(str);
+        //    string[] temp = FormatString.splitString(str);
+        //    foreach (var i in temp)
+        //    {
+        //        Console.WriteLine(i);
+        //    }
+        //    Console.Read();
+        //}
     }
 }
 

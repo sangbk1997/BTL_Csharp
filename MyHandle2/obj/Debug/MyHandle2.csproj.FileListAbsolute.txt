@@ -1,0 +1,2 @@
+F:\DotNet\BTLCsharp\BTL_Csharp\MyHandle2\obj\Debug\MyHandle2.csprojResolveAssemblyReference.cache
+F:\DotNet\BTLCsharp\BTL_Csharp\MyHandle2\obj\Debug\MyHandle2.csproj.CoreCompileInputs.cache

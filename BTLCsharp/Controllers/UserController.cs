@@ -6,7 +6,6 @@ using BTLCsharp.Dao;
 using System.Web.Mvc;
 using BTLCsharp.Models;
 using BTLCsharp.EF;
-using TempClass;
 
 namespace BTLCsharp.Controllers
 {
@@ -40,6 +39,7 @@ namespace BTLCsharp.Controllers
                     user.joinDate = DateTime.Now;
                     user.age = obj.age;
                     user.modeAccess = 0;
+                    user.totalScores = 0;
                     var result = dao.Insert(user);
                     string alert = "Nickname : " + user.meta_username.ToString();
                     if(result > 0)
@@ -111,10 +111,12 @@ namespace BTLCsharp.Controllers
                 var user = new User();
                 user = dao.GetById((string)(Session["USER_SESSION"]));
                 var listHis = db.HistoricalScores.Where(s => s.idUser == user.id);
-                var showedScores = listHis.OrderBy(s => s.seqDay).ToList().Take(10);
-                var showedListScores = listHis.OrderBy(s => s.seqDay).ToList();
-                ViewBag.obj = showedScores;
-                ViewBag.listScores = showedListScores;
+                var showedScoresGraph = listHis.OrderBy(s => s.seqDay).ToList().Take(10);
+                var maxScoreIsShowed = showedScoresGraph.Max(s => s.score);
+                var showedListScoresTable = listHis.OrderBy(s => s.seqDay).ToList();
+                ViewBag.maxScoreIsShowedG = maxScoreIsShowed;
+                ViewBag.obj = showedScoresGraph;
+                ViewBag.listScores = showedListScoresTable;
                 ViewBag.player = Session["USER_SESSION"];
                 return View();
 

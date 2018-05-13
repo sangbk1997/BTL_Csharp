@@ -27,7 +27,14 @@ namespace BTLCsharp.Controllers
         {
             db = new Model2();
             var categories = db.Categories.Select(s => s.meta_Category).ToList();
-            if(!categories.Contains(category))
+            if (categories != null)
+            {
+                for (int i = 0; i < categories.Count; i++)
+                {
+                    categories[i] = categories[i].Replace(' ', '-');
+                }
+            }
+            if (!categories.Contains(category))
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -35,32 +42,39 @@ namespace BTLCsharp.Controllers
             {
                 var audios = db.Audios.ToList();
                 List<Audio> listAudio = new List<Audio>();
-                foreach(var audio in audios)
+                foreach (var audio in audios)
                 {
-                    if(audio.Category.Replace(' ', '-').Equals(category))
+                    if (audio.Category.Replace(' ', '-').Equals(category))
                     {
                         listAudio.Add(audio);
                     }
                 }
-
+                if (listAudio == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 ViewBag.audios = listAudio;
                 return View();
             }
-           
-           
+
+
         }
         public ActionResult AudioByLevel(int level)
         {
             db = new Model2();
             var listLevel = db.Audios.Select(s => s.level);
             var levels = listLevel.Distinct().ToArray();
-            if( level< Int32.Parse(levels[0].ToString()) || level > Int32.Parse(levels[levels.Length-1].ToString()))
+            if (level < Int32.Parse(levels[0].ToString()) || level > Int32.Parse(levels[levels.Length - 1].ToString()))
             {
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 var audios = db.Audios.Where(s => s.level == level).ToList();
+                if (audios == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 ViewBag.audios = audios;
                 return View();
             }
@@ -87,6 +101,10 @@ namespace BTLCsharp.Controllers
         {
             db = new Model2();
             ViewBag.audio = db.Audios.Find(id);
+            if (ViewBag.audio == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.display = "none";
             TempData["id"] = id;
             return View();
@@ -94,40 +112,41 @@ namespace BTLCsharp.Controllers
         [HttpPost]
         public ActionResult correctionMode(inputDataModal model)
         {
-           
-            ViewBag.display = "display";
-            db = new Model2();
-            Audio obj = db.Audios.Find(TempData["id"]);
-            ViewBag.audio = obj;
-            string contentAudio = "";
-            if (obj != null)
+
+            if (model != null || model.value.ToString().Equals(""))
             {
-                contentAudio = String.Concat(contentAudio,obj.content.ToString());
-            }
-            string tempString = "";
-            if (model != null)
-            {
+                ViewBag.display = "display";
+                db = new Model2();
+                Audio obj = db.Audios.Find(TempData["id"]);
+                ViewBag.audio = obj;
+                string contentAudio = "";
+                contentAudio = String.Concat(contentAudio, obj.content.ToString());
+                string tempString = "";
                 tempString = String.Concat(tempString, model.value.ToString());
-            }
-            tempString = TempClass.functionClass.removeOddLetter(tempString);
-            tempString = tempString.ToLower();
-            contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
-            contentAudio = contentAudio.ToLower();
-            string[] arrayTempString = tempString.Split(new char[] { ' ' });
-            List<string> listItems = TempClass.LCS.getLCS(arrayTempString, contentAudio);
-            string[] arrayStringContent = contentAudio.Split(new char[] { ' ' });
-            ViewData["inputData"] = tempString;
-            ViewData["contentAudio"] = contentAudio;
-            ViewData["LSS"] = listItems;
-            TempData.Keep("id");
+                tempString = TempClass.functionClass.removeOddLetter(tempString);
+                tempString = tempString.ToLower();
+                contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
+                contentAudio = contentAudio.ToLower();
+                string[] arrayTempString = tempString.Split(new char[] { ' ' });
+                List<string> listItems = TempClass.LCS.getLCS(arrayTempString, contentAudio);
+                string[] arrayStringContent = contentAudio.Split(new char[] { ' ' });
+                ViewData["inputData"] = tempString;
+                ViewData["contentAudio"] = contentAudio;
+                ViewData["LSS"] = listItems;
+                TempData.Keep("id");
 
-            // Công thức tính điểm trong chế độ CorrectionMode 
-            var score = (listItems.Count * 100 / contentAudio.Length) * obj.level;
-            ViewBag.score = score;
+                // Công thức tính điểm trong chế độ CorrectionMode 
+                var score = (listItems.Count * 100 / contentAudio.Length) * (obj.level+2);
+                ViewBag.score = score;
 
-            // Cong diem neu nguoi dung da dang nhap 
-            addScore((int)score);
+                // Cong diem neu nguoi dung da dang nhap 
+                addScore((int)score);
                 return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult fullMode(int id)
@@ -135,6 +154,10 @@ namespace BTLCsharp.Controllers
             db = new Model2();
             Audio audio = db.Audios.Find(id);
             ViewBag.audio = audio;
+            if(ViewBag.audio == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             string contentAudio = audio.content.ToString();
             contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
             ViewBag.contentAudio = contentAudio;
@@ -145,6 +168,10 @@ namespace BTLCsharp.Controllers
             db = new Model2();
             Audio audio = db.Audios.Find(id);
             ViewBag.audio = audio;
+            if (ViewBag.audio == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             string contentAudio = audio.content.ToString();
             contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
             ViewBag.contentAudio = contentAudio;
@@ -155,6 +182,10 @@ namespace BTLCsharp.Controllers
             db = new Model2();
             Audio audio = db.Audios.Find(id);
             ViewBag.audio = audio;
+            if (ViewBag.audio == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             string contentAudio = audio.content.ToString();
             contentAudio = TempClass.functionClass.removeOddLetter(contentAudio);
             ViewBag.contentAudio = contentAudio;
@@ -163,55 +194,70 @@ namespace BTLCsharp.Controllers
 
         public ActionResult addScore(int score)
         {
-            if(Session["USER_SESSION"] != null)
+            if (Session["USER_SESSION"] != null)
             {
                 db = new Model2();
                 var dao = new UserDao();
                 var user = new User();
                 user = dao.GetById((string)(Session["USER_SESSION"]));
-                // Cong them diem vao cho nguoi dung 
-
                 var objUser = db.Users.Find(user.id);
-                objUser.totalScores += score;
-                db.SaveChanges();
-
-                //
-
-                // Them doi tuong diem vao trong lich su 
-                String day = dayLearned();
-                var findObj = db.HistoricalScores.Find(user.id, day);
-                if (findObj != null)
+                var listHis = db.HistoricalScores.Where(s => s.idUser == user.id).ToList();
+                var maxScoreDay = 0;
+                if (listHis.Count > 0)
                 {
-                    findObj.score += score;
-                    db.SaveChanges();
-                    ViewBag.id = findObj.idUser;
+                    maxScoreDay = (int)listHis.Max(s => s.score);
+                }
+                if((maxScoreDay +score)  >= 2000)
+                {
+                    TempData["limitScore"] = "The limit for each day is 2000 points. You have reach the limitation and don't add more scores ! ";
+                    return Redirect("/Home/Index");
                 }
                 else
                 {
-                    var maxSeq = 0;
-                    var listHis = db.HistoricalScores.Where(s => s.idUser == user.id).ToList();
-                    if(listHis != null)
+                    // Cong them diem vao cho nguoi dung 
+                    int addedScore = score;
+                    if(maxScoreDay + score >= 2000)
                     {
-                        maxSeq =(int) listHis.Max(s => s.seqDay);
+                         addedScore = (2000 - maxScoreDay);
                     }
-                    var obj = new HistoricalScore();
-                    obj.idUser = user.id;
-                    obj.dayLearned = day;
-                    obj.score = score;
-                    obj.seqDay = maxSeq + 1;
-                    dao.addHistoricalScore(obj);
+                    objUser.totalScores += addedScore;
+                    db.SaveChanges();
+                    // Them doi tuong diem vao trong lich su 
+                    String day = dayLearned();
+                    var findObj = db.HistoricalScores.Find(user.id, day);
+                    if (findObj != null)
+                    {
+                        findObj.score += addedScore;
+                        db.SaveChanges();
+                        ViewBag.id = findObj.idUser;
+                    }
+                    else
+                    {
+                        var maxSeq = 0;
+                        //var listHis = db.HistoricalScores.Where(s => s.idUser == user.id).ToList();
+                        if (listHis.Count > 0)
+                        {
+                            maxSeq = (int)listHis.Max(s => s.seqDay);
+                        }
+                        var obj = new HistoricalScore();
+                        obj.idUser = user.id;
+                        obj.dayLearned = day;
+                        obj.score = addedScore;
+                        obj.seqDay = maxSeq + 1;
+                        dao.addHistoricalScore(obj);
+                    }
                 }
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public ActionResult SubmitAudio()
         {
-          
+
             if (Session["USER_SESSION"] != null)
             {
                 return View();
-            }   
+            }
             else
             {
                 TempData["alertMsg"] = "You must login to can submit new audio !";
@@ -226,7 +272,7 @@ namespace BTLCsharp.Controllers
             user = dao.GetById((string)(Session["USER_SESSION"]));
             if (dao.checkAudio(TempClass.FormatString.removeOddLetter(obj.audioName)))
             {
-                if(user.modeAccess == 1)
+                if (user.modeAccess == 1)
                 {
                     ModelState.AddModelError("", "This Audio is updated content !");
                     var audio = dao.GetAudioById(TempClass.FormatString.removeOddLetter(obj.audioName));
@@ -241,7 +287,7 @@ namespace BTLCsharp.Controllers
                 {
                     ModelState.AddModelError("", "This audio is exist. Please add new Audio !");
                 }
-                
+
 
             }
             else
@@ -268,7 +314,7 @@ namespace BTLCsharp.Controllers
                 }
             }
             return View(obj);
-           
+
         }
         [HttpGet]
         public ActionResult addCategory()
@@ -276,14 +322,14 @@ namespace BTLCsharp.Controllers
             var dao = new UserDao();
             var user = new User();
             user = dao.GetById((string)Session["USER_SESSION"]);
-            if (Session["USER_SESSION"] != null && user.modeAccess ==1 )
+            if (Session["USER_SESSION"] != null && user.modeAccess == 1)
             {
 
                 return View();
             }
             else
             {
-                TempData["alertMsg"] ="Sorry only admin can add Categories";
+                TempData["alertMsg"] = "Sorry only admin can add Categories";
                 return Redirect("/Home/Index");
             }
         }
@@ -293,7 +339,8 @@ namespace BTLCsharp.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                if (dao.checkCategory(TempClass.FormatString.removeOddLetter(obj.category))){
+                if (dao.checkCategory(TempClass.FormatString.removeOddLetter(obj.category)))
+                {
                     ModelState.AddModelError("", "This Category is updated content !");
                     var category = dao.GetCategoryById(TempClass.FormatString.removeOddLetter(obj.category));
                     category.briefIntroduce = obj.description;
@@ -312,7 +359,7 @@ namespace BTLCsharp.Controllers
                     category.urlImg = obj.urlImg;
                     category.idUser = user.id;
                     var result = dao.addCategory(category);
-                    if(result == true)
+                    if (result == true)
                     {
                         ModelState.AddModelError("", "Add Category Success!");
                         obj = new CategoryModal();

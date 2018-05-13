@@ -62,13 +62,14 @@
 
     .col .point {
         position: absolute;
-        padding: 5px;
+        padding: 0px 10px;
         background-color: blue;
-        right: -15px;
+        right: -10px;
+        bottom: 0px;
         border: 1px solid navy;
     }
 
-.tooltipText {
+.col .tooltipText {
     visibility: hidden;
     text-align: center;
     padding: 10px 20px;
@@ -78,14 +79,13 @@
     border-radius: 10px;
 }
 
-.point:hover .tooltipText {
+.col .point:hover .tooltipText {
     visibility: visible;
 }
 
 .row {
     position: relative;
     border-bottom: 1px dotted orange;
-    height: 20px;
 }
 
     .row:last-child {

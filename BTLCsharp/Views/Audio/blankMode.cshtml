@@ -145,7 +145,8 @@
                 var number = @number;
 
                 // Cong thuc tinh diem cho che do blankMode
-            maxScrore = @audio.level *Math.floor((value / number) * 100);
+                var total = Math.floor(number * 100*5/@contentAudio.Length)
+            maxScrore = (@audio.level+1) * Math.floor((value / number * total));
             maxScore.innerHTML = maxScrore;
             for (var i = 0; i < value; i++) {
                 tagInserted[i] = document.createElement("input");

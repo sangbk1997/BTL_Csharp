@@ -39,7 +39,7 @@
                 <div>
                     @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "label" })
                     <div>
-                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "inputData" } })
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "inputData password"} })
                         @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                     </div>
                 </div>

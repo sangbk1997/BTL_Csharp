@@ -311,7 +311,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TempClass\TempClass.csproj">
+    <ProjectReference Include="C:\Users\sangh\OneDrive\Máy tính\BTL_Csharp-e282430ca3cb87dc0e7274c2d860107def93e30b\TempClass\TempClass.csproj">
       <Project>{a6e2fce4-4c2b-453c-af83-c05c7ef7cc51}</Project>
       <Name>TempClass</Name>
     </ProjectReference>
