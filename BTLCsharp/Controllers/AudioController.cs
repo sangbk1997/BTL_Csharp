@@ -372,5 +372,18 @@ namespace BTLCsharp.Controllers
             }
             return View(obj);
         }
+        public ActionResult ListAudios(int page)
+        {
+            var db = new BTLCsharp.EF.Model2();
+            var audios = db.Audios.OrderByDescending(s => s.views).ToList();
+            var maxPage = audios.Count / 10 + 1;
+            if(page > maxPage || page < 1)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            ViewBag.listAudio = audios;
+            ViewBag.page = page;
+            return View();
+        }
     }
 }

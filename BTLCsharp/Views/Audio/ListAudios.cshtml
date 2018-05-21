@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "ListAudios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contentDetail">
+    <br />
+    <div style="text-align:center">
+        <span style="text-align:center; padding: 10px 15px; color: purple; font-size: 35px;" class="tada">List Audio</span>
+    </div>
+    <br />
+    @{
+        var db = new BTLCsharp.EF.Model2();
+        var audios = ViewBag.listAudio;
+        var currentPage = ViewBag.page;
+        var maxPage = audios.Count / 10 + 1;
+        if (audios == null)
+        {
+            <h3>No audios in Database</h3>
+        }
+        else
+        {
+            if (currentPage != maxPage)
+            {
+                for (int i = (currentPage - 1) * 10; i < (currentPage * 10); i++)
+                {
+                    <div class="audio hvr-pulse-grow col-6">
+                        <div class="audioName">
+                            <a href="@Url.Action("ListeningModes","Audio", new {id = audios[i].idAudio})">@audios[i].audioName</a>
+                        </div>
+                        <div class="extraInfo" style="font-size: 15px;">( Author: @db.Users.Find(audios[i].idUser).meta_username | Level : @audios[i].level | Category : @audios[i].Category )</div>
+                    </div>
+                }
+            }
+            else
+            {
+                for (int i = (currentPage - 1) * 10; i < audios.Count; i++)
+                {
+                    <div class="audio hvr-pulse-grow col-6">
+                        <div class="audioName">
+                            <a href="@Url.Action("ListeningModes","Audio", new {id = audios[i].idAudio})">@audios[i].audioName</a>
+                        </div>
+                        <div class="extraInfo" style="font-size: 15px;">( Author: @db.Users.Find(audios[i].idUser).meta_username | Level : @audios[i].level | Category : @audios[i].Category )</div>
+                    </div>
+                }
+            }
+
+
+        }
+
+
+        <div style="text-align: center; clear: both;">
+            <br /><br />
+            <h2>Pages:</h2>
+            @{
+                for (int i = 1; i <= maxPage; i++)
+                {
+                    <a href="@Url.Action("ListAudios","Audio", new {page = i})" style="padding: 7px 20px; color: blue; background-color: #00ff90; text-decoration: none; border-radius: 10px;" class="hvr-outline-in">@i</a>
+                }
+            }
+        </div>
+    }
+</div>
+

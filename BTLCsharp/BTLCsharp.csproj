@@ -290,6 +290,7 @@
     <Content Include="Views\User\viewFMScore.cshtml" />
     <Content Include="Views\Audio\addScore.cshtml" />
     <Content Include="Views\User\viewScore.cshtml" />
+    <Content Include="Views\Audio\ListAudios.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
